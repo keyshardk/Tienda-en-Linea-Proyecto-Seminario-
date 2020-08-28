@@ -73,38 +73,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-         <li class="nav-header">Pedidos</li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Abiertos</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>En proceso</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p>Cerrados</p>
-            </a>
-          </li>
-         <li class="nav-header">Productos</li>
-          <li class="nav-item">
-            <a href="procesos/listadoProductos.php" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>Ver productos</p>
-            </a>
-          </li>
-          <li class="nav-header">Usuarios</li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>Ver usuarios</p>
-            </a>
           </li>
       </ul>
       </nav>
@@ -112,6 +80,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
