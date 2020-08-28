@@ -73,80 +73,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Pedidos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                   <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>Abiertos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                   <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>En proceso</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                   <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>Cerrados</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                Productos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Crear producto</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Listado productos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Usuarios
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                   <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Crear usuario Admin</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                   <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Listado Usuario</p>
-                </a>
-              </li>
-            </ul>
           </li>
       </ul>
       </nav>
@@ -155,14 +81,6 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
-    </div>
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
