@@ -39,14 +39,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado productos</h1>
+            <h1>Nueva Categoría</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item active">                      
-                <a href="nuevaCategoria.php"><button type="button" class="btn btn-block btn-info">Nueva categoria</button></a>
+              <li class="breadcrumb-item active">                      
+                <a href="listadoProductos.php"><button type="button" class="btn btn-block btn-secondary">Ver listado producto</button></a>
               </li>
-               <li class="">                      
+              <li class="">                      
                 <a href="nuevoProducto.php"><button type="button" class="btn btn-block btn-warning">Nuevo producto</button></a>
               </li>
             </ol>
@@ -54,69 +54,61 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    <!-- Main content -->
-    <section class="content">
+<section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="card">
+          <div class="col-md-12">
+            <!-- general form elements disabled -->
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">En la siguiente tabla encuentra todos los productos. </h3>
+                <h3 class="card-title">Datos de la categoría</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Existencia</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                  </tr>
-               </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Existencia</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                  </tr>
-                  </tfoot>
-                </table>
+                <form method="POST" role="form" action="inserciones.php">
+                  <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Nombre categoría</label>
+                        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese nombre" required="">
+                        <input  hidden name="insertaCategoria" id="insertaCategoria" value="nuevaCategoria" type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="4" placeholder="Ingrese descripción" ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Seleccione estado</label>
+                        <select class="form-control" name="estado" id="estado">
+                          <option>Activo</option>
+                          <option>Inactivo</option>
+                        </select>
+                      </div>
+                     </div>
+                     <div class="form-group">
+                       <label><font color="red">Revisa antes de CREAR CATEGORIA que todos los datos sean correctos!</font></label>
+                     </div>
+                   <center>
+                    <div class="col-sm-12">
+                     <div class="form-group">
+                       <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear categoria</button>
+                </div>
+                  </div>
+                </form>
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+           </div>
+      </div><!-- /.container-fluid -->
+    </div>
+  </div>
     </section>
+    <!-- /.content -->
     <!-- /.content -->
   </div>
 
