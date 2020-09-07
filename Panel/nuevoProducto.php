@@ -54,38 +54,34 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-      <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- general form elements disabled -->
-            <div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">Datos generales del producto</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form role="form" action="inserciones.php" enctype='multipart/form-data'>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label><font color="red">Seleccione Categoria</font></label>
-                        <select class="form-control" name="estado" id="estado">
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-warning">
+          <div class="card-header">
+            <h3 class="card-title">Datos generales del producto</h3>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="inserciones.php" enctype='multipart/form-data'>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label><font color="red">Seleccione Categoria</font></label>
+                      <select class="form-control" name="idCategoria" id="idCategoria">
                         <?php 
                           $con   = mysqli_connect('localhost','root','','mydb');
-
-                          $consultaCategoria ="select nombre from tbl_categorias where estado='Activo'";
+                          $consultaCategoria ="select id_Categorias as id ,nombre from tbl_categorias 
+                                                where estado='Activo'";
                           $categoriaConsultada = $con->query($consultaCategoria);
                           while ($row = mysqli_fetch_array($categoriaConsultada)) 
                                 {?>
-                                  <option><?php echo "".$row["nombre"];?></option>
+                                  <option value="<?php echo "".$row['id']?>"><?php echo "".$row["nombre"];?></option>
                           <?php } ?>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <!-- text input -->
                       <div class="form-group">
                         <label>Código producto</label>
                          <input hidden name="insertaProducto" id="insertaProducto" value="nuevoProducto" type="text" class="form-control" placeholder="Ingrese Código" required="">
@@ -101,8 +97,7 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
+                     <div class="form-group">
                         <label>Descripción</label>
                         <textarea name="descripcion" id="descripcion" class="form-control" rows="4" placeholder="Ingrese descripción" ></textarea>
                       </div>
@@ -121,7 +116,7 @@
                       </div>
                      </div>
                   </div>
-                </form>
+                
               </div>
               <!-- /.card-body -->
             </div>
@@ -137,7 +132,7 @@
                   <div class="row">
                     <div class="form-group">
                         <label>Marca</label>
-                        <input name="marca" id="marca" type="text" class="form-control" placeholder="Ingrese precio" required="">
+                        <input name="marca" id="marca" type="text" class="form-control" placeholder="Ingrese marca" required="">
                     </div>
                    <div class="form-group">
                         <label>Precio producto</label>
@@ -167,17 +162,18 @@
                      </div>
                    <center><div class="col-sm-2">
                   <div class="form-group">
-                       <button type="button" class="btn btn-block bg-gradient-success btn-lg">Crear producto</button>
+                       <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear producto</button>
                 </div>
               </div></center>
                   
                  </div> 
-                </form>
+              
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
+            </form>
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
