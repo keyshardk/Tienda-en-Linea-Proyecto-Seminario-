@@ -18,7 +18,7 @@ if($_POST["insertaProducto"] == "nuevoProducto"){
 
         $imgFile3     = $_FILES['imagen3']['name'];
         $tmp_dir3     = $_FILES['imagen3']['tmp_name'];
-        $imgSize3      = $_FILES['imagen3']['size'];
+        $imgSize3     = $_FILES['imagen3']['size'];
         
         $upload_dir1   = 'imagenesProductos/'; // upload directory
         $upload_dir2   = 'imagenesProductos/'; // upload directory
@@ -38,24 +38,24 @@ if($_POST["insertaProducto"] == "nuevoProducto"){
         move_uploaded_file($tmp_dirUp1,$upload_dir1.$imgProducto1);
         move_uploaded_file($tmp_dirUp2,$upload_dir2.$imgProducto2);
         move_uploaded_file($tmp_dirUp3,$upload_dir3.$imgProducto3);
-                
+                echo "id Categoria: ".$_POST["idCategoria"];
         $insertaProducto = "insert INTO `tbl_encabezado_producto`  
                 VALUES ('','".$_POST["codigoProducto"]."','".$_POST["nombre"]."','".$_POST["descripcion"]."','".$_POST["estado"]."')";
         $productoInsertado   = $con->query($insertaProducto);
         $llavePrimaria       = mysqli_insert_id($con);
 
         $insertaDetalle = "insert INTO `tbl_detalle_producto`  
-                            VALUES ('','".$_POST["precio"]."','".$_POST["precioOferta"]."','".$_POST["marca"]."','".$_POST["imagen1"]."','".$_POST["imagen2"]."','".$_POST["imagen3"]."','".$llavePrimaria."','".$_POST["idCategoria"]."')";
+                            VALUES ('','".$_POST["precio"]."','".$_POST["precioOferta"]."','".$_POST["existencia"]."','".$_POST["marca"]."','".$imgProducto1."','".$imgProducto2."','".$imgProducto3."','".$llavePrimaria."','".$_POST["idCategoria"]."')";
         $detalleInsertado   = $con->query($insertaDetalle);
         echo "<script language='javascript'>alert('Producto almacenado exitosamente');</script>";
-        echo "<script language='javascript'>window.open('integradoProductos.php','_self',);</script>";
+        echo "<script language='javascript'>window.open('listadoProductos.php','_self',);</script>";
     }
 
  if($_POST["insertaCategoria"] == "nuevaCategoria"){
     echo "Categoria insertada exitosamente";
     $insertaCategoria  = "insert INTO `tbl_categorias`  
                           VALUES ('','".$_POST["nombre"]."','".$_POST["descripcion"]."','".$_POST["estado"]."')";
-    $categoriaInsertada = $con->query($insertaCategoria);
+     $categoriaInsertada = $con->query($insertaCategoria);
      echo "<script language='javascript'>alert('Categoría creada exitosamente');</script>";
      echo "<script language='javascript'>window.open('listadoProductos.php','_self',);</script>";
     }
