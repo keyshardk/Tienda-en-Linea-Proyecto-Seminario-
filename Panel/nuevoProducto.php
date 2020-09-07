@@ -68,6 +68,22 @@
               <div class="card-body">
                 <form role="form" action="inserciones.php" enctype='multipart/form-data'>
                   <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label><font color="red">Seleccione Categoria</font></label>
+                        <select class="form-control" name="estado" id="estado">
+                        <?php 
+                          $con   = mysqli_connect('localhost','root','','mydb');
+
+                          $consultaCategoria ="select nombre from tbl_categorias where estado='Activo'";
+                          $categoriaConsultada = $con->query($consultaCategoria);
+                          while ($row = mysqli_fetch_array($categoriaConsultada)) 
+                                {?>
+                                  <option><?php echo "".$row["nombre"];?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                    </div>
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
