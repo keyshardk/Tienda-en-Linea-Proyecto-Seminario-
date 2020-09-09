@@ -106,7 +106,7 @@
           <nav aria-label="breadcrumb">
             <h2 class="hny-title text-center">Nombre Categoria</h2>
             <ol class="breadcrumb mb-0">
-              <li><a href="index.html">Inicio</a>
+              <li><a href="index.php">Inicio</a>
                 <span class="fa fa-angle-double-right"></span></li>
               <li class="active">Nombre Categoria</li>
             </ol>
@@ -149,7 +149,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -174,7 +174,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -199,7 +199,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -224,7 +224,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -249,7 +249,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -274,7 +274,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -299,7 +299,7 @@
                 <div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>

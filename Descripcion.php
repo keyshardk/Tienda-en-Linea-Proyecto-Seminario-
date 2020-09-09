@@ -12,7 +12,7 @@
 </head>
 <body>
 <section class="w3l-banner-slider-main inner-pagehny">
-  <div class="breadcrumb-infhny">
+  <div class="breadcrumb-infhny1">
     <div class="top-header-content">
       <header class="tophny-header">
         <div class="container-fluid">
@@ -104,11 +104,9 @@
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Nombre Categoria</h2>
+            <h2 class="hny-title text-center">Descripcion Producto</h2>
             <ol class="breadcrumb mb-0">
-              <li><a href="index.html">Inicio</a>
-                <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Nombre Categoria</li>
+              <li><a href="index.php">Inicio</a>
             </ol>
           </nav>
         </div>
@@ -117,219 +115,30 @@
     </div>
 </section>
 
-    <section class="w3l-ecommerce-main">
-	<div class="ecom-contenthny py-5">
-		<div class="container py-lg-5">
-			<div class="ecom-products-grids row mt-lg-5 mt-3">
-				<div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="#">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
     
-
-  
-
+<section class="w3l-wecome-content-6">
+	  <div class="ab-content-6-mian py-5">
+			 <div class="container py-lg-5">
+					<div class="welcome-grids row">
+							<div class="col-lg-6 mb-lg-0 mb-5">
+									<h3 class="hny-title">Nombre Producto</h3>
+								     <p class="mb-4">Descripcion del Producto</p>
+                            <div class="product-content">
+							        <center> <span class="price"><br>Q 000.00<br><del style="color:gray;">Q 000.00</del></span></center>
+						    </div>
+				            <div class="read">
+									<center><a href="#" class="read-more btn">Comprar</a></center>
+				             </div>	
+							</div>
+							<div class="col-lg-6 welcome-image">
+								<img src="assets/images/2.jpg" class="img-fluid" alt="" />
+							</div>	
+						</div>	
+				 </div>
+			 </div>
+	 </section>
+    
+    
   <section class="w3l-footer-22">
       <div class="footer-hny py-5">
           <div class="container py-lg-5">
