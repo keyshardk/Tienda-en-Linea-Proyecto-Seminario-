@@ -6,9 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Muebleria Velasquez</title>
-     <meta name="description" content="Fabrica de Muebles Velasquez">
+  <meta name="description" content="Fabrica de Muebles Velasquez">
   <meta name="keywords" content="HTML,CSS,PHP,JavaScript">
-     <link href="Logo/LOGO.png" rel="shortcut icon" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="SoccerPlay" />
+  <link href="Logo/LOGO.png" rel="shortcut icon" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="SoccerPlay" />
   <link rel="stylesheet" href="assets/css/style-starter.css">
 </head>
 <body>
@@ -93,13 +93,13 @@
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Comedores.php">Comedores</a>
+								<a class="nav-link" href="Categoria.php">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Salas.php">Salas</a>
+								<a class="nav-link" href="Categoria.php">Salas</a>
 							  </li>
 							<li class="nav-item">
-								<a class="nav-link" href="Contacto.php">Contacto</a>
+								<a class="nav-link" href="Categoria.php">Contacto</a>
 							</li>
 						</ul>
 					</div>
@@ -175,7 +175,7 @@
 			<center><div class="welcome-grids row mt-5">
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="Comedores.php">
+								<a href="Categoria.php">
 										<img src="Logo/Comedor1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
                                     <h3 class="title">Comedores</h3>
@@ -186,7 +186,7 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="#URL">
+								<a href="Categoria.php">
 										<img src="Logo/Sala1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">Salas</h3>
@@ -198,7 +198,7 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="#URL">
+								<a href="Categoria.php">
 										<img src="Logo/Ofertas1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">Ofertas</h3>
@@ -213,6 +213,46 @@
 </section>
     </center>
 
+    
+<section class="features-4">
+	<div class="features4-block py-5">
+		<div class="container py-lg-5">
+			<h3 class="hny-title text-center">Nuestros Servicios</h3>
+			<div class="features4-grids text-center row mt-5">
+				<div class="col-lg-3 col-md-6 features4-grid">
+					<div class="features4-grid-inn">
+						<span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
+						<h5><a href="#URL">Llámanos en cualquier momento</a></h5>
+                        <p></p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+						<div class="features4-grid-inn">
+							<span class="fa fa-truck icon-fea4" aria-hidden="true"></span>
+							<h5><a href="#URL">Envio Gratis</a></h5>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 features4-grid">
+							<div class="features4-grid-inn">
+								<span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
+								<h5><a href="#URL">Devoluciones gratis</a></h5>
+								<p></p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 features4-grid">
+								<div class="features4-grid-inn">
+									<span class="fa fa-money icon-fea4" aria-hidden="true"></span>
+									<h5><a href="#URL">Pagos seguros</a></h5>
+									<p></p>
+								</div>
+				        </div>
+			</div>
+		</div>
+	</div>
+</section>
+    
+    
 
 <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
@@ -354,9 +394,9 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Comedores.php">Comedores</a></li>
-                                      <li><a href="Salas.php">Salas</a></li>
-                                      <li><a href="Contacto.php">Contacto</a></li>
+                                      <li><a href="Categoria.php">Comedores</a></li>
+                                      <li><a href="Categoria.php">Salas</a></li>
+                                      <li><a href="Categoria.php">Contacto</a></li>
                                   </ul>
                               </div>
                           </div>

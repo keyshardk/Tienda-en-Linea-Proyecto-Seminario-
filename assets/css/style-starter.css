@@ -7253,12 +7253,12 @@ iframe {
   }
 }
 
-.w3l-banner-slider-main.inner-pagehny {
-  /*-- Responsive design --*/
+.w3l-banner-slider-main.inner-pagehny 
+{
 }
 
 .w3l-banner-slider-main.inner-pagehny .breadcrumb-infhny {
-  background: url(../images/bg1.jpg) no-repeat center;
+  background: url(../../Logo/Cat1.jpg) no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -7636,7 +7636,7 @@ iframe {
 .features-4 span.fa.icon-fea4 {
   font-size: 50px;
   margin-bottom: 16px;
-  color: #ff7315;
+  color: #50ac42;
 }
 
 @media all and (max-width: 1080px) {
