@@ -98,7 +98,7 @@
 								<a class="nav-link" href="Categoria.php">Salas</a>
 							  </li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Contacto</a>
+								<a class="nav-link" href="Contacto.php">Contacto</a>
 							</li>
 						</ul>
 					</div>
@@ -395,7 +395,7 @@
                                       <li><a href="index.php">Inicio</a></li>
                                       <li><a href="Categoria.php">Comedores</a></li>
                                       <li><a href="Categoria.php">Salas</a></li>
-                                      <li><a href="Categoria.php">Contacto</a></li>
+                                      <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
                           </div>
