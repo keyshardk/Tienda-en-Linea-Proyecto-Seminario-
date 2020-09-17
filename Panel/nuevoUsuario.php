@@ -44,7 +44,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">                      
-                <a href="listadoProductos.php"><button type="button" class="btn btn-block btn-secondary">Ver listado usuarios</button></a>
+                <a href="listadoUsuarios.php"><button type="button" class="btn btn-block btn-secondary">Ver listado usuarios</button></a>
               </li>
             </ol>
           </div>
@@ -66,13 +66,13 @@
                       <div class="form-group">
                        <label>Nombre</label>
                          <input hidden name="insertaUsuario" id="insertaUsuario" value="nuevoUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
-                        <input required name="nombreUsuario" id="nombreUsuario" type="text" class="form-control" placeholder="Ingrese Nombre">
+                        <input required name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Apellido</label>
-                        <input required name="apellidoUsuario" id="apellidoUsuario" type="text" class="form-control" placeholder="Ingrese apellido">
+                        <input required name="apellido" id="apellido" type="text" class="form-control" placeholder="Ingrese apellido">
                       </div>
                     </div>
                     <div class="col-sm-6">

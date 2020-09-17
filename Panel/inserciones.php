@@ -71,4 +71,18 @@ if($_POST["insertaProducto"] == "nuevoProducto"){
      echo "<script language='javascript'>alert('Categoría creada exitosamente');</script>";
      echo "<script language='javascript'>window.open('listadoProductos.php','_self',);</script>";
     }
+ if($_POST["insertaUsuario"] == "nuevoUsuario"){
+     $encrypt=sha1($_POST["pass"]); 
+     $admin="1";
+     $nombre="Nuevo Usuario Admin";
+     $descripcion="Creación de nuevo usuario administrador.";
+     $insertaCategoria  = "insert INTO `tbl_usuario`  
+                          VALUES ('','".$_POST["nombre"]."','".$_POST["apellido"]."','".$_POST["correo"]."','".$encrypt."','".$_POST["estado"]."','".$admin."')";
+     $categoriaInsertada = $con->query($insertaCategoria);
+     $insertaBitacora  = "insert INTO `tbl_bitacora`  
+                          VALUES ('','".$usuario."','".$nombre."','".$descripcion."','".$hora."','".$fecha."')";
+     $bitacoraInsertada = $con->query($insertaBitacora);
+     echo "<script language='javascript'>alert('Usuario creado exitosamente');</script>";
+     echo "<script language='javascript'>window.open('listadoUsuarios.php','_self',);</script>";
+    }
 ?>
