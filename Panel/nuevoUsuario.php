@@ -39,72 +39,83 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado usuarios</h1>
+            <h1>Nuevo usuario</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item active">                      
-                <a href="nuevoUsuario.php"><button type="button" class="btn btn-block btn-warning">Nuevo usuario</button></a>
+              <li class="breadcrumb-item active">                      
+                <a href="listadoProductos.php"><button type="button" class="btn btn-block btn-secondary">Ver listado usuarios</button></a>
               </li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">En la siguiente tabla encuentra todos los usuarios. </h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Usuario</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>001</td>
-                    <td>Juanito Jones</td>
-                    <td>juanito@gmail.com</td>
-                    <td>Activo</td>
-                    <td><button type="button" class="btn btn-secondary">Ver detalle</button>
-                        <button type="button" class="btn btn-primary">Realizar cambio</button>
-                    </td>
-                  </tr>
-               </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Existencia</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                  </tr>
-                  </tfoot>
-                </table>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-warning">
+          <div class="card-header">
+            <h3 class="card-title">Datos generales del usuario</h3>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="inserciones.php" enctype='multipart/form-data'>
+              <div class="row">
+                <div class="col-sm-6">
+                      <div class="form-group">
+                       <label>Nombre</label>
+                         <input hidden name="insertaUsuario" id="insertaUsuario" value="nuevoUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
+                        <input required name="nombreUsuario" id="nombreUsuario" type="text" class="form-control" placeholder="Ingrese Nombre">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Apellido</label>
+                        <input required name="apellidoUsuario" id="apellidoUsuario" type="text" class="form-control" placeholder="Ingrese apellido">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Correo electronico</label>
+                        <input required name="correo" id="correo" type="email" class="form-control" placeholder="Ingrese correo electronico">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Contraseña</label>
+                        <input required name="pass" id="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                   <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Seleccione estado</label>
+                        <select class="form-control" name="estado" id="estado">
+                          <option>Activo</option>
+                          <option>Inactivo</option>
+                        </select>
+                      </div>
+                      </div>
+                         </div>
+                        <center><div class="col-sm-2">
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear usuario</button>
+                </div>
+              </div></center>
+                  </div>
+                
               </div>
               <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
           </div>
-          <!-- /.col -->
+            </form>
+          <!--/.col (right) -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
     </section>
+    <!-- /.content -->
     <!-- /.content -->
   </div>
 

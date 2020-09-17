@@ -82,8 +82,8 @@
                     <td>Sala ambar</td>
                     <td>2</td>
                     <td>Activo</td>
-                    <td><button type="button" class="btn btn-info">Ver detalle</button>
-                        <button type="button" class="btn btn-warning">Realizar cambio</button>
+                    <td><button type="button" class="btn btn-secondary">Ver detalle</button>
+                        <button type="button" class="btn btn-primary">Realizar cambio</button>
                     </td>
                   </tr>
                 </tbody>
