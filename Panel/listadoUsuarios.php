@@ -31,6 +31,12 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con   = mysqli_connect('localhost','root','','mydb');// 
+    if ($con->connect_error) 
+       {
+        die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+      }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -73,17 +79,23 @@
                     <th>Acción</th>
                   </tr>
                   </thead>
+                  <?php
+                      $consultaListado ="select id_usuario as id,concat(Nombre,' ',Apellido) as nombre,Correo,Estado from tbl_usuario";
+                          $consultando = $con->query($consultaListado);
+                          while ($row = mysqli_fetch_array($consultando)) 
+                                {
+                                  ?>
                   <tbody>
                   <tr>
-                    <td>001</td>
-                    <td>Juanito Jones</td>
-                    <td>juanito@gmail.com</td>
-                    <td>Activo</td>
+                    <td><?php echo "".$row["id"]?></td>
+                    <td><?php echo "".$row["nombre"]?></td>
+                    <td><?php echo "".$row["Correo"]?></td>
+                    <td><?php echo "".$row["Estado"]?></td>
                     <td><button type="button" class="btn btn-secondary">Ver detalle</button>
                         <button type="button" class="btn btn-primary">Realizar cambio</button>
                     </td>
                   </tr>
-               </tbody>
+               </tbody><?php } ?>
                   <tfoot>
                   <tr>
                     <th>id</th>

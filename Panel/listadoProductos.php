@@ -31,6 +31,11 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con= mysqli_connect('localhost','root','','mydb');
+    if($con->connect_error){
+       die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+    }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -76,17 +81,25 @@
                     <th>Acción</th>
                   </tr>
                   </thead>
+                  <?php
+                      $consultaListado ="select T0.Codigo_Producto as codigo,T0.Nombre as nombre,T0.Estado, T1.existencia from tbl_encabezado_producto T0
+                        inner join tbl_detalle_producto T1 on T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto";
+                          $consultando = $con->query($consultaListado);
+                          while ($row = mysqli_fetch_array($consultando)) 
+                                {
+                                  ?>
                   <tbody>
                   <tr>
-                    <td>001</td>
-                    <td>Sala ambar</td>
-                    <td>2</td>
-                    <td>Activo</td>
+                    <td><?php echo "".$row["codigo"];?></td>
+                    <td><?php echo "".$row["nombre"];?></td>
+                    <td><?php echo "".$row["existencia"];?></td>
+                    <td><?php echo "".$row["Estado"];?></td>
                     <td><button type="button" class="btn btn-secondary">Ver detalle</button>
                         <button type="button" class="btn btn-primary">Realizar cambio</button>
                     </td>
                   </tr>
                 </tbody>
+              <?php } ?>
                   <tfoot>
                   <tr>
                     <th>id</th>
