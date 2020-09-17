@@ -78,24 +78,15 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td>001</td>
+                    <td>Sala ambar</td>
+                    <td>2</td>
+                    <td>Activo</td>
+                    <td><button type="button" class="btn btn-info">Ver detalle</button>
+                        <button type="button" class="btn btn-warning">Realizar cambio</button>
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
                   </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                  </tr>
-               </tbody>
+                </tbody>
                   <tfoot>
                   <tr>
                     <th>id</th>
