@@ -38,7 +38,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="inicio.php" class="nav-link">Inicio</a>
+        <a href="index.php" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Pedidos</a>
@@ -50,8 +50,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="inicio.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="index.php" class="brand-link">
+      <img src="imagenesProductos/trebol.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Muebles Velasquez</span>
     </a>
@@ -61,10 +61,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="imagenesProductos/banner.png" class="img-circle elevation-2" alt="Muebles">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Bienvenido!</a>
         </div>
       </div>
 
@@ -73,6 +73,38 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+         <li class="nav-header">Pedidos</li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Abiertos</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>En proceso</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p>Cerrados</p>
+            </a>
+          </li>
+         <li class="nav-header">Productos</li>
+          <li class="nav-item">
+            <a href="listadoProductos.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Ver productos</p>
+            </a>
+          </li>
+          <li class="nav-header">Usuarios</li>
+          <li class="nav-item">
+            <a href="listadoUsuarios.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Ver usuarios</p>
+            </a>
           </li>
       </ul>
       </nav>
@@ -80,6 +112,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
