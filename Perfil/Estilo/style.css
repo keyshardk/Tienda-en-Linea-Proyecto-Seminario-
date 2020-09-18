@@ -1,0 +1,75 @@
+header h1{
+    text-align: center;/*CENTRAR EL TEXTO */
+    font-size: 25px;/*TAMAÑO DE LETRA*/
+    font-weight: bold;/*NEGRITAS*/
+}
+
+.contenedor-formulario{
+    position: relative;
+    margin: 30px auto;/*CENTRA EL FORMULARIO DE FORMA HORIZONTAL Y DA UN MARGEN SUPERIOR E INFERORO DE 30 PX*/
+    width: 400px;/*DA UN ANCHO FIJO DE 400PX AL CONTENEDOR DEL FORMULARIO*/
+}
+
+form{ 
+    text-align:center;/*ALINEANDO TODOS LOS ELEMENTOS AL CENTRO DEL FORMULARIO*/
+}
+
+.campo-texto{
+    width: 300px;/*TAMAÑO DEL INPUT */
+    height: 25px;/*ALTURA DEL INPUT*/
+    padding: 10px;/*ESPACIO QUE DEJA ENTRE EL BORDE DEL INPUT Y LA LETRA ESCRITA DENTRO DEL INPUT*/
+    padding-left: 50px;/*ESPACIO QUE SE DA AL LADO IZQUIERDO*/
+    margin-top: 20px;/*MARGEN SUPERIOR CON RESPECTO DEL ELEMENTO QUE SE ENCUENTRE POR ENCIMA*/
+    font-weight: bolder;/*NEGRITAS*/
+    text-align:left;/*ALINEACION DEL TEXTO*/
+}
+
+textarea.campo-texto{/*ESTE CSS ACTUARA SOLO SOBRE LOS ELEMENTOS TEXTAREA QUE CONTENGAN LA CLASE CAMPO TEXTO, ESTO QUIERE DECIR QUE NO AFECTARA A LOS INPUT NI A NINGUN OTRO ELEMENTO MAS QUE A LOS TEXTAREA*/
+    resize:vertical;/**/
+}
+
+.submit{
+    width: 180px;
+    margin-top: 20px;
+    display:inline-block;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.borrar{
+    width: 180px;
+    margin-top: 20px;
+    display:inline-block;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 22px;
+    display:inline-block;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+
+.boton{
+    width: 150px;
+    height: 40px;
+    display:inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+*{ 
+    font-family: helvetica;
+}
+
+

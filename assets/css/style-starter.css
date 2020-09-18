@@ -3298,7 +3298,7 @@ a.read-more-btn2.btn:hover {
 }
 
 .w3l-banner-slider-main ul.top-hnt-right-content li.usernhy a:hover {
-  background: #ff7315;
+  background: #50ac42;;
 }
 
 .w3l-banner-slider-main a.btn-open span.fa {
@@ -3342,6 +3342,19 @@ a.read-more-btn2.btn:hover {
 }
 
 .w3l-banner-slider-main button.submit-login.btn {
+  box-shadow: none;
+  background: #50ac42;;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  font-weight: 600;
+}
+
+.w3l-banner-slider-main button.submit-login.btn1 {
   box-shadow: none;
   background: #ff7315;
   padding: 12px 20px;
@@ -4584,7 +4597,7 @@ button.top_transmitv_cart {
 }
 
 button.top_transmitv_cart:hover {
-  background: #ff7315;
+  background: #50ac42;;
   transition: 0.5s all;
   -webkit-transition: 0.5s all;
   -moz-transition: 0.5s all;
