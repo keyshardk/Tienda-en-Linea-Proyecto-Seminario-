@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="zxx">
 
@@ -6,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Muebleria Velasquez</title>
-     <meta name="description" content="Fabrica de Muebles Velasquez">
+  <meta name="description" content="Fabrica de Muebles Velasquez">
   <meta name="keywords" content="HTML,CSS,PHP,JavaScript">
-     <link href="Logo/LOGO.png" rel="shortcut icon" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="SoccerPlay" />
+  <link href="Logo/LOGO.png" rel="shortcut icon" /><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="SoccerPlay" />
   <link rel="stylesheet" href="assets/css/style-starter.css">
 </head>
 <body>
@@ -44,33 +43,21 @@
 							<i class="fa fa-times" aria-hidden="true"></i>
 						</button>
 						<div class="wrap">
-							<h5 class="text-center mb-4">Login Now</h5>
+							<h5 class="text-center mb-4">Iniciar Sesion</h5>
 							<div class="login-bghny p-md-5 p-4 mx-auto mw-100">
-								<form action="#" method="post">
+								<form action="Perfil/Inicio_Sesion.php" method="post">
 									<div class="form-group">
-										<p class="login-texthny mb-2">Email address</p>
-										<input type="email" class="form-control" id="exampleInputEmail1"
-											aria-describedby="emailHelp" placeholder="" required="">
-										<small id="emailHelp" class="form-text text-muted">We'll never share your email
-											with anyone else.</small>
+										<p class="login-texthny mb-2">Correo</p>
+										<input type="email" class="form-control" id="Correo"  name="Correo" placeholder="" required="">
 									</div>
 									<div class="form-group">
-										<p class="login-texthny mb-2">Password</p>
-										<input type="password" class="form-control" id="exampleInputPassword1"
-											placeholder="" required="">
+										<p class="login-texthny mb-2">Contraseña</p>
+										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                                      <a href="Perfil/Clave.php"><center><small id="Clave"   name="Clave" class="form-text text-muted">¿Olvidaste tu Constraseña?</small></center></a>  
 									</div>
-									<div class="form-check mb-2">
-										<div class="userhny-check">
-											<label class="check-remember container">
-												<input type="checkbox" class="form-check"> <span
-													class="checkmark"></span>
-												<p class="privacy-policy">Remember me</p>
-											</label>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<button type="submit" class="submit-login btn mb-4">Sign In</button>
+									<button type="submit" class="submit-login btn mb-4">Iniciar Sesion</button>
 								</form>
+                                <button type="submit" onclick="location.href='Perfil/Registrarse.php'" class="submit-login btn1 mb-4">Registrarse</button>
 							</div>
 						</div>
 					</div>
@@ -93,10 +80,10 @@
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Comedores.php">Comedores</a>
+								<a class="nav-link" href="Categoria.php">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Salas.php">Salas</a>
+								<a class="nav-link" href="Categoria.php">Salas</a>
 							  </li>
 							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
@@ -175,7 +162,7 @@
 			<center><div class="welcome-grids row mt-5">
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="Comedores.php">
+								<a href="Categoria.php">
 										<img src="Logo/Comedor1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
                                     <h3 class="title">Comedores</h3>
@@ -186,7 +173,7 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="#URL">
+								<a href="Categoria.php">
 										<img src="Logo/Sala1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">Salas</h3>
@@ -198,7 +185,7 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="#URL">
+								<a href="Categoria.php">
 										<img src="Logo/Ofertas1.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">Ofertas</h3>
@@ -213,6 +200,46 @@
 </section>
     </center>
 
+    
+<section class="features-4">
+	<div class="features4-block py-5">
+		<div class="container py-lg-5">
+			<h3 class="hny-title text-center">Nuestros Servicios</h3>
+			<div class="features4-grids text-center row mt-5">
+				<div class="col-lg-3 col-md-6 features4-grid">
+					<div class="features4-grid-inn">
+						<span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
+						<h5><a href="#URL">Llámanos en cualquier momento</a></h5>
+                        <p></p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+						<div class="features4-grid-inn">
+							<span class="fa fa-truck icon-fea4" aria-hidden="true"></span>
+							<h5><a href="#URL">Envio Gratis</a></h5>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 features4-grid">
+							<div class="features4-grid-inn">
+								<span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
+								<h5><a href="#URL">Devoluciones gratis</a></h5>
+								<p></p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 features4-grid">
+								<div class="features4-grid-inn">
+									<span class="fa fa-money icon-fea4" aria-hidden="true"></span>
+									<h5><a href="#URL">Pagos seguros</a></h5>
+									<p></p>
+								</div>
+				        </div>
+			</div>
+		</div>
+	</div>
+</section>
+    
+    
 
 <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
@@ -222,7 +249,7 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2 transmitv">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-1.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-11.jpg">
 							</a>
@@ -247,7 +274,7 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
 							</a>
@@ -273,7 +300,7 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-3.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-33.jpg">
 							</a>
@@ -299,7 +326,7 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 						<div class="product-image2">
-							<a href="#">
+							<a href="Descripcion.php">
 								<img class="pic-1 img-fluid" src="assets/images/shop-4.jpg">
 								<img class="pic-2 img-fluid" src="assets/images/shop-44.jpg">
 							</a>
@@ -354,8 +381,8 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Comedores.php">Comedores</a></li>
-                                      <li><a href="Salas.php">Salas</a></li>
+                                      <li><a href="Categoria.php">Comedores</a></li>
+                                      <li><a href="Categoria.php">Salas</a></li>
                                       <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
