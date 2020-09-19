@@ -1,5 +1,20 @@
+
+<?php
+    session_start();
+    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(0);
+    $user = $_SESSION['Usuario'];
+
+    if($user == null || $$user = '')
+    {
+        echo "<script language='javascript'> alert('Por favor Inicie Sesion.'); window.location.href = '../index.php'; </script>";
+        die();
+    }
+
+?>
+
 <!doctype html>
-<html lang="es">
+<html lang="es" ng-app="BasicApp">
 
 <head>
   <meta charset="utf-8">
@@ -12,7 +27,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="Estilo/style.css">
+    <link rel='stylesheet' href='https://cdn.rawgit.com/angular/bower-material/v0.10.0/angular-material.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css'>
 </head>
+   <style>
+body { overflow : hidden } // esto igual quitaria horizontal y vertical
+</style> 
+    
+  
 <body>
 <section class="w3l-banner-slider-main inner-pagehny">
   <div class="breadcrumb-infhny">
@@ -54,64 +76,103 @@
       </header>
 
         
-     <center><div class="breadcrumb-contentnhy">
+  <center><div class="breadcrumb-contentnhy">
         <div class="container">
-          <h3 style="color:white">Registro</h3>
+            <?php 
+            include 'conexion.php';	
+
+                $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	            if (!$conn) 
+                {           
+                    echo "Fallo en Conexion";
+		            die("Connection failed: " . mysqli_connect_error());
+        
+	            }
+            	$tipo = "select Nombre,Apellido  from tbl_usuario where Correo ='$user' "; 
+		        $resultado = mysqli_query($conn, $tipo);
+                $row = mysqli_fetch_assoc($resultado);
+                $nom = $row['Nombre'];
+                $ape = $row['Apellido'];
+            ?>
+          <h3 style="color:white">Bienvenido <h3 style="color:#50ac42;"><?php echo $nom?>&nbsp;<?php echo $ape?> </h3> </h3>
+            <br>
+            <br>
         </div>
       </div></center> 
     </div>
     </div>
 </section>
     
+           
+  
+    <md-content layout="row" layout-align="center start">
+    <div layout="row" flex="85" layout-align="center start">
+          <md-card>
+            <md-toolbar md-scroll-shrink style="background: #50ac42;">
+                <div class="md-toolbar-tools">
+                    <span>Datos Personales</span>
+                    <span flex></span>
             
+                </div>
+     </md-toolbar>
+<md-card-content>
+        <md-list>
+          <md-list-item class="md-2-line">
+            <img class="md-avatar" ng-src="http://icons.iconarchive.com/icons/graphicloads/flat-finance/256/person-icon.png" style="height:80px; width:80px">
+            <div>
+                
+                  <?php 
+            include 'conexion.php';	
+
+                $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	            if (!$conn) 
+                {           
+                    echo "Fallo en Conexion";
+		            die("Connection failed: " . mysqli_connect_error());
+        
+	            }
+            	$tipo = "select Nombre,Apellido,direccion,telefono,correo,clave  from tbl_usuario where Correo ='$user' "; 
+		        $resultado = mysqli_query($conn, $tipo);
+                $row = mysqli_fetch_assoc($resultado);
+                $nom = $row['Nombre'];
+                $ape = $row['Apellido'];
+                $direc = $row['direccion'];
+                $cel = $row['telefono'];
+                $cor= $row['correo'];
+            ?>
+              <h2 class="md-headline" style=" margin-top: 33px;"><?php echo $nom?>&nbsp;<?php echo $ape?></h2>
+            <md-divider></md-divider>
+          <md-list-item class="md-2-line">
+        <md-icon></md-icon>
+        <div class="md-list-item-text" ng-class="md-offset">
+          <h3 style="padding-top:8px;"><?php echo $direc?></h3>
+          <p class="muted">  Direccion  </p>
+        </div>
+      </md-list-item>
+           <md-divider></md-divider>       
+          <md-list-item class="md-2-line">
+        <md-icon></md-icon>
+        <div class="md-list-item-text" ng-class="md-offset">
+          <h3 style="padding-top:8px;"><?php echo $cel?></h3>
+          <p class="muted">  Telefono  </p>
+        </div>
+            <md-divider></md-divider>
+      </md-list-item>
+         
+          <md-list-item class="md-2-line">
+        <md-icon  class="ion-android-mail" ng-style="{'font-size':'32px', height: '32px'}"></md-icon>
+        <div class="md-list-item-text">
+          <h3 style="padding-top:8px;"> <?php echo $cor?></h3>
+          <p class="muted">  Correo  </p>
+        </div>
+      </md-list-item>
+
+          <br>
+          <br>
           <br>
           <br>
           <br>
         
 
-  <section class="w3l-footer-22">
-      <div class="footer-hny py-5">
-          <div class="container py-lg-5">
-              <div class="text-txt row">
-                  <div class="left-side col-lg-4">
-                      <br>
-                      <br>
-                      <br>
-                      <h3><a class="logo-footer" href="index.php">
-                          Muebleria<span class="lohny">&nbsp;  Velasquez</span></a></h3>
-                      <ul class="social-footerhny mt-lg-5 mt-4">
-                          <li><a class="facebook" href="#"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-                          </li>
-                          <li><a class="instagram" href="#"><span class="fa fa-instagram" aria-hidden="true"></span></a>
-                          </li>
-                      </ul>
-                  </div>
 
-                  <div class="right-side col-lg-8 pl-lg-5">
-                      <div class="sub-columns">
-                          <div class="sub-one-left">
-                              <h6>Nuestros Links</h6>
-                              <div class="footer-hny-ul">
-                                  <ul>
-                                      <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Categoria.php">Comedores</a></li>
-                                      <li><a href="Categoria.php">Salas</a></li>
-                                      <li><a href="Contacto.php">Contacto</a></li>
-                                  </ul>
-                              </div>
-                          </div>
-                          <div class="sub-two-right">
-                              <h6>Direccion</h6>
-                              <p class="mb-5">11 calle, Final lote 59 colonia los Pinos zona 17<br> Guatemala -- Guatemala</p>
-                                <h6>Telefono</h6>
-                              <p class="mb-5">+502 0000-0000</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  </body>
-  </html>
-
+ 

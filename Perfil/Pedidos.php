@@ -1,3 +1,18 @@
+
+<?php
+    session_start();
+    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(0);
+    $user = $_SESSION['Usuario'];
+
+    if($user == null || $$user = '')
+    {
+        echo "<script language='javascript'> alert('Por favor Inicie Sesion.'); window.location.href = '../index.php'; </script>";
+        die();
+    }
+
+?>
+
 <!doctype html>
 <html lang="es">
 
@@ -11,8 +26,13 @@
   <link rel="stylesheet" href="../assets/css/style-starter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="Estilo/style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="Estilo/style.css">
+     <link rel="stylesheet" href="Estilo/pedidos.css">
 </head>
+    
+    
+  
 <body>
 <section class="w3l-banner-slider-main inner-pagehny">
   <div class="breadcrumb-infhny">
@@ -24,7 +44,6 @@
             </div>
           </div>
         </div>
-          
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
 					<a class="navbar-brand" href="index.php">
@@ -36,51 +55,99 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
+							<li class="nav-item e">
 								<a class="nav-link" href="../index.php">Inicio</a>
 							</li>
 							<li class="nav-item ">
-								<a class="nav-link" href="../Categoria.php">Comedores</a>
+								<a class="nav-link" href="Informacion.php">Informacion</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="../Categoria.php">Salas</a>
+							<li class="nav-item active">
+								<a class="nav-link" href="Pedidos.php">Pedidos</a>
 							  </li>
 							<li class="nav-item">
-								<a class="nav-link" href="../Contacto.php">Contacto</a>
+								<a class="nav-link" href="cerrrar_sesion.php">Cerrar Sesion</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
       </header>
-        
-        
-        
+
         
      <center><div class="breadcrumb-contentnhy">
         <div class="container">
-          <h3 style="color:white">Registro</h3>
+            <?php 
+            include 'conexion.php';	
+
+                $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	            if (!$conn) 
+                {           
+                    echo "Fallo en Conexion";
+		            die("Connection failed: " . mysqli_connect_error());
+        
+	            }
+            	$tipo = "select Nombre,Apellido  from tbl_usuario where Correo ='$user' "; 
+		        $resultado = mysqli_query($conn, $tipo);
+                $row = mysqli_fetch_assoc($resultado);
+                $nom = $row['Nombre'];
+                $ape = $row['Apellido'];
+            ?>
+          <h3 style="color:white">Bienvenido <h3 style="color:#50ac42;"><?php echo $nom?>&nbsp;<?php echo $ape?> </h3> </h3>
+            <br>
+            <br>
         </div>
       </div></center> 
     </div>
     </div>
 </section>
-<div style="text-align:center;padding:10px;">
-    <div>
-        <div class="contenedor-formulario">
-            <header>
-                <h1>Por favor, ingrese sus datos </h1>
-            </header>
-            <form action="Registro.php" method="post">
-                <input class="campo-texto" id="nombre" type="text" name="nombre" placeholder="Nombre" maxlength="20" required="" /> 
-                <input class="campo-texto" id="apellido" type="text" name="apellido" placeholder="Apellido" maxlength="20" required="" />  
-                <input class="campo-texto" id="email" type="email" name="email" placeholder="Correo" maxlength="50" required="" />
-                <input class="campo-texto" type="password" id="password" type="password" name="password" placeholder="Contrase&ntilde;a" maxlength="15" required="" /> 
-                <input type="submit" value="Registrarse" class="submit" />
-            </form>
-        </div>
-    </div>
-</div>
+    
+            
+          <br>
+          <br>
+    
+    
+<main class="panelD">
+  <center><h1>Mis Pedidos</h1></center>
+  <div class="tabla">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="negrita">
+        
+        <th><strong><center><b>Descripcion</b></center></strong></th>
+        <th><strong><center><b>Monto</b></center></strong></th>
+        <th><strong><center><b>Fecha</b></center></strong></th>
+      </tr>
+      <tr>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th> 
+      </tr>
+      <tr>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th> 
+      </tr>
+      <tr>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th> 
+      </tr>
+      <tr>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th> 
+      </tr>
+      <tr>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th>
+        <th><center>$300</center></th> 
+      </tr>
+    </table>
+  </div>
+</main>
+
+          <br>
+        
+
   <section class="w3l-footer-22">
       <div class="footer-hny py-5">
           <div class="container py-lg-5">
