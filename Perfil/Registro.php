@@ -1,5 +1,6 @@
 <?php
 session_start();
+ error_reporting(E_ALL ^ E_NOTICE);
 $_SESSION['usuario'] = $Correo;
 
 include 'conexion.php';	

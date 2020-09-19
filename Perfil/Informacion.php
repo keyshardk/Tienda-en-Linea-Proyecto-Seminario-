@@ -1,3 +1,19 @@
+
+<?php
+    session_start();
+    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(0);
+    $user = $_SESSION['Usuario'];
+
+    if($user == null || $$user = '')
+    {
+        echo "<script language='javascript'> alert('Por favor Inicie Sesion.'); window.location.href = '../index.php'; </script>";
+        die();
+    }
+
+?>
+
+
 <!doctype html>
 <html lang="es">
 
@@ -24,7 +40,6 @@
             </div>
           </div>
         </div>
-          
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
 					<a class="navbar-brand" href="index.php">
@@ -36,30 +51,50 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
+							<li class="nav-item e">
 								<a class="nav-link" href="../index.php">Inicio</a>
 							</li>
-							<li class="nav-item ">
-								<a class="nav-link" href="../Categoria.php">Comedores</a>
+							<li class="nav-item active">
+								<a class="nav-link" href="Informacion.php">Informacion</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="../Categoria.php">Salas</a>
+							<li class="nav-item ">
+								<a class="nav-link" href="Pedidos.php">Pedidos</a>
 							  </li>
 							<li class="nav-item">
-								<a class="nav-link" href="../Contacto.php">Contacto</a>
+								<a class="nav-link" href="cerrrar_sesion.php">Cerrar Sesion</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
       </header>
-        
-        
-        
+
         
      <center><div class="breadcrumb-contentnhy">
         <div class="container">
-          <h3 style="color:white">Registro</h3>
+               <?php 
+            include 'conexion.php';	
+
+                $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	            if (!$conn) 
+                {           
+                    echo "Fallo en Conexion";
+		            die("Connection failed: " . mysqli_connect_error());
+        
+	            }
+            	$tipo = "select Nombre,Apellido,direccion,telefono,correo,clave  from tbl_usuario where Correo ='$user' "; 
+		        $resultado = mysqli_query($conn, $tipo);
+                $row = mysqli_fetch_assoc($resultado);
+                $nom = $row['Nombre'];
+                $ape = $row['Apellido'];
+                $direc = $row['direccion'];
+                $cel = $row['telefono'];
+                $cor= $row['correo'];
+                $clave= $row['clave'];
+            ?>
+          <h3 style="color:white">Bienvenido <h3 style="color:#50ac42;"><?php echo $nom?>&nbsp;<?php echo $ape?> </h3> </h3>
+            <br>
+            <br>
         </div>
       </div></center> 
     </div>
@@ -69,14 +104,16 @@
     <div>
         <div class="contenedor-formulario">
             <header>
-                <h1>Por favor, ingrese sus datos </h1>
+                <h1>Actualizar Datos </h1>
             </header>
-            <form action="Registro.php" method="post">
-                <input class="campo-texto" id="nombre" type="text" name="nombre" placeholder="Nombre" maxlength="20" required="" /> 
-                <input class="campo-texto" id="apellido" type="text" name="apellido" placeholder="Apellido" maxlength="20" required="" />  
-                <input class="campo-texto" id="email" type="email" name="email" placeholder="Correo" maxlength="50" required="" />
-                <input class="campo-texto" type="password" id="password" type="password" name="password" placeholder="Contrase&ntilde;a" maxlength="15" required="" /> 
-                <input type="submit" value="Registrarse" class="submit" />
+            <form action="Actualizar.php" method="post">
+                <input class="campo-texto" id="correo" type="email" name="correo" value="<?php echo "".$cor;?>" maxlength="50" required="" />
+                <input class="campo-texto" id="nombre" type="text" name="nombre" value="<?php echo "".$nom;?>" maxlength="20" required=""  /> 
+                <input class="campo-texto" id="apellido" type="text" name="apellido" value="<?php echo "".$ape;?>" maxlength="20" required=""  /> 
+                <input class="campo-texto" id="direccion" type="text" name="direccion"  placeholder="Direccion" value="<?php echo "".$direc?>" maxlength="200" required="" />  
+                <input class="campo-texto" id="cel" type="text" name="cel" placeholder="Celular" value="<?php echo "".$cel;?>"maxlength="20" required="" />  
+                <input class="campo-texto" type="password" id="password" type="password" name="password"value="<?php echo "".$clave;?>" maxlength="12" required="" disabled/> 
+                <input type="submit" value="Actualizar" class="submit" />
             </form>
         </div>
     </div>
