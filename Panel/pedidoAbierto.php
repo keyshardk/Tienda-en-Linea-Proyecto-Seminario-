@@ -36,8 +36,11 @@
        {
         die("Connection failed: " . $conn->connect_error);
         echo "NO CONECTA";
-        $fechaActual = date("Y/m/d");
-      }?>
+       }
+      $fechaActual = date("Y/m/d");
+      $id_Pedido = $_GET["id"];
+      $estado    = $_GET["s"];
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -45,7 +48,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Pedido Abierto</h1>
+            <?php if($estado == "Abierto"){?>
+            <h1><font color="green">Pedido Abierto</font></h1>
+          <?php } ?>
+           <?php if($estado == "Proceso"){?>
+            <h1><font color="orange">Pedido Proceso</font></h1>
+          <?php } ?>
+           <?php if($estado == "Cerrado"){?>
+            <h1><font color="red">Pedido Cerrado</font></h1>
+          <?php } ?>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -59,13 +70,45 @@
       </div><!-- /.container-fluid -->
     </section>
  <section class="content">
+  <?php 
+                             $consultaPedido = "select T0.Id_Encabezado_Pedido  as id,T0.Fecha,T0.Hora,T0.Estado, concat(T1.Nombre,' ',T1.Apellido) as cliente,T1.Correo, T1.direccion, T1.telefono from tbl_encabezado_pedido T0
+                INNER JOIN tbl_usuario T1 on T0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario where Id_Encabezado_Pedido = '$id_Pedido' and T0.Estado = '$estado'";
+                $consultando = $con->query($consultaPedido);
+                while ($row = mysqli_fetch_array($consultando)) 
+                      {
+                       $cliente = $row["cliente"];
+                       $direccion = $row["direccion"];
+                       $telefono = $row["telefono"];
+                       $correo = $row["Correo"];
+                       $fecha = $row["Fecha"];
+                       $hora = $row["Hora"];
+                       $estado = $row["Estado"];
+                       $pedido = $row["id"];
+                
+              ?>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Nota:</h5>
-             Este pedido se encuentra Abierto para iniciar su proceso de Gestión Revise que todo se encuentre bien y de click en el botón Gestionar Pedido.
-            </div>
+            <?php if($estado == "Abierto"){?>
+              <div class="callout callout-info">
+                  <h5><i class="fas fa-info"></i> Nota:</h5>
+                      Este pedido se encuentra Abierto para iniciar su proceso de Gestión Revise que todo se encuentre bien y de click en el botón Gestionar Pedido.
+              </div>
+            <?php }?>
+            <?php if($estado == "Proceso"){?>
+              <div class="callout callout-info">
+                  <h5><i class="fas fa-info"></i> Nota:</h5>
+                      Este pedido se encuentra en Proceso , ya fué gestionado y se encuentra en proceso de entrega y de ser finalizado.
+              </div>
+            <?php }?>
+            <?php if($estado == "Cerrado"){?>
+              <div class="callout callout-info">
+                  <h5><i class="fas fa-info"></i> Nota:</h5>
+                      Este pedido se encuentra Cerrado, ya fué gestionado y finalizado.
+            <?php }?>
+            
+
+
 
 
             <!-- Main content -->
@@ -82,23 +125,7 @@
                 <!-- /.col -->
               </div>
               <!-- info row -->
-              <?php 
-               $id_Pedido = $_GET["id"];
-               $consultaPedido = "select T0.Id_Encabezado_Pedido  as id,T0.Fecha,T0.Hora,T0.Estado, concat(T1.Nombre,' ',T1.Apellido) as cliente,T1.Correo, T1.direccion, T1.telefono from tbl_encabezado_pedido T0
-                INNER JOIN tbl_usuario T1 on T0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario where Id_Encabezado_Pedido = '$id_Pedido'";
-                $consultando = $con->query($consultaPedido);
-                while ($row = mysqli_fetch_array($consultando)) 
-                      {
-                       $cliente = $row["cliente"];
-                       $direccion = $row["direccion"];
-                       $telefono = $row["telefono"];
-                       $correo = $row["Correo"];
-                       $fecha = $row["Fecha"];
-                       $hora = $row["Hora"];
-                       $estado = $row["Estado"];
-                       $pedido = $row["id"];
-                
-              ?>
+              
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
                   De:
@@ -135,6 +162,7 @@
 
               <!-- Table row -->
               <?php 
+
                    $pedidoDetalle = "select T0.Cantidad ,T0.Precio, T1.Nombre, T1.Descripcion ,T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido  as idEncabezado  
                       from tbl_detalle_pedido T0 
                      INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
@@ -176,24 +204,36 @@
               </div>
               <!-- /.row -->
                 <?php } ?> 
+            <form target="_blank" method="POST" action="pedidoImprime.php">
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">Importante:</p>
+                  <?php if($estado == "Abierto"){ ?>
                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                     Cuando de click en el boton "Gestionar pedido" se generá un pdf y   llegará un correo al cliente con el pdf adjunto indicandole que su pedido ya fué procesado y está listo para enviar.
-                  </p>
+                  </p><?php } ?>
+                  <?php if($estado == "Proceso"){?>
+                 <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                    Cuando de click en el boton "Cerrar Pedido" el pedido cambiará a un estado de Cerrado.
+                  </p><?php } ?>
+                  <?php if($estado == "Cerrado"){?>
+                 <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                   El pedido ya se encuentra finalizado.
+                  </p><?php } ?>
                 </div>
                 <!-- /.col -->
-                <form target="_blank" method="POST" action="pedidoImprime.php" enctype='multipart/form-data'>
+               
                 <?php 
-                  $pedidoPago = "select T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido as idEncabezado,T0.Cantidad ,T0.Precio  from tbl_detalle_pedido T0 
-                                INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
+                  $pedidoPago = "select T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido as idEncabezado,T0.Cantidad ,T0.Precio ,T2.Envio as envio from tbl_detalle_pedido T0 
+                    INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto
+                    INNER JOIN tbl_encabezado_pedido T2 ON T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = T2.Id_Encabezado_Pedido WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
                      $consultando = $con->query($pedidoPago);
                      while ($row = mysqli_fetch_array($consultando)) {
                              $idEncabezado = $row["idEncabezado"];
                              $cantidad = $row["Cantidad"];
                              $precio = $row["Precio"];
+                             $envio = $row["envio"];
                              $subtotal = $cantidad*$precio; ?>
                 <div class="col-12">
                   <input hidden type="" name="idEncabezado" id="idEncabezado" value="<?php echo "".$idEncabezado;?>">
@@ -206,7 +246,15 @@
                       </tr>
                       <tr>
                         <th>Envío</th>
+                        <?php if($estado == "Abierto"){?>
                         <td><input type="text" name="envio" id="envio" ></td>
+                      <?php } ?>
+                      <?php if($estado == "Proceso"){?>
+                        <td><input readonly type="text" name="envio" id="envio" value="<?php echo "".$envio;?>" ></td>
+                      <?php } ?>
+                      <?php if($estado == "Cerrado"){?>
+                        <td><input readonly type="text" name="envio" id="envio" value="<?php echo "".$envio;?>"></td>
+                      <?php } ?>
                       </tr>
                       <tr>
                         <th>Total:</th>
@@ -223,12 +271,29 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                   <button type="submit" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Gestionar pedido</button>
+                  <?php 
+                      if($estado == "Abierto"){?>
+                        <button type="submit" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Gestionar pedido</button>
+                      <?php } ?>
+                      </form>
+                       <form method="POST" action="ediciones.php">
+                       <?php if($estado == "Proceso"){?>
+                       
+                          <input  name="pedidoProceso" id="pedidoProceso" value="pedidoProceso">
+                          <input  name="idPedido" id="idPedido" value="<?php echo "".$idEncabezado;?>">
+                          <button type="submit" class="btn btn-primary">Cerrar pedido</button>
+                      
+                      <?php }?>
+                      </form>
+                     <?php if($estado == "Cerrado"){?>
+                        
+                      <?php } ?>
+                   
                 <?php } ?>
                 </div>
               </div>
             </div>
-          </form>
+          
             <!-- /.invoice -->
           </div><!-- /.col -->
         </div><!-- /.row -->
