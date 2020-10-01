@@ -95,26 +95,29 @@
                   <tbody>
                   <?php
                      $estado=$_GET["id"];
-                      $consultaPedido ="select T0.Id_Encabezado_Pedido as id,T0.Fecha,T0.Hora, CONCAT(T1.Nombre,' ',T1.Apellido) AS usuario, sum(T2.Total) as total from tbl_encabezado_pedido T0 
+                      $consultaPedido ="select T0.Id_Encabezado_Pedido as id,T0.Estado,T0.Fecha,T0.Hora, CONCAT(T1.Nombre,' ',T1.Apellido) AS usuario, sum(T2.Total) as total from tbl_encabezado_pedido T0 
                         INNER JOIN tbl_usuario T1 ON t0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario
                         INNER JOIN tbl_detalle_pedido T2 ON T0.Id_Encabezado_Pedido = T2.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido WHERE T0.Estado = '$estado'";
                           $consultando = $con->query($consultaPedido);
                           while ($row = mysqli_fetch_array($consultando)) 
-                                {?>
+                                {
+                                 $estado = $row["Estado"]; 
+                                 $id= $row["id"];
+                                  ?>
                   <tr>
                     <td><?php echo "".$row["usuario"]?></td>
                     <td><?php echo "".$row["Fecha"]?></td>
                     <td><?php echo "".$row["Hora"]?></td>
                     <td><?php echo "Q. ".number_format($row["total"])?></td>
                     <td>
-                      <?php if($estado  == "Abierto"){ $id= $row["id"];?>
-                           <button onclick="location.href='pedidoAbierto.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Gestionar Pedido</button>
+                      <?php if($estado  == "Abierto"){ ?>
+                           <button onclick="location.href='pedidoAbierto.php?id=<?php echo $id;?>&s=<?php echo $estado;?>'" type="button" class="btn btn-secondary">Gestionar Pedido</button>
                      <?php } ?>
                      <?php if($estado  == "Proceso"){?>
-                           <button onclick="location.href='pedidoProceso.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Gestionar Pedido</button>
+                           <button onclick="location.href='pedidoAbierto.php?id=<?php echo $id;?>&s=<?php echo $estado;?>'" type="button" class="btn btn-secondary">Cerrar Pedido</button>
                      <?php } ?>
                      <?php if($estado  == "Cerrado"){?>
-                           <button onclick="location.href='pedidoCerrado.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Gestionar Pedido</button>
+                           <button onclick="location.href='pedidoAbierto.php?id=<?php echo $id;?>&s=<?php echo $estado;?>'" type="button" class="btn btn-secondary">Ver Pedido</button>
                      <?php } ?>
                     </td>
                     

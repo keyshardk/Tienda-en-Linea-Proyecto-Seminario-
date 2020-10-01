@@ -37,6 +37,7 @@
         die("Connection failed: " . $conn->connect_error);
         echo "NO CONECTA";
         $fechaActual = date("Y/m/d");
+        
       }?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -76,8 +77,17 @@
                //UPDATE ESTADO PEDIDO Y COSTO ENVIO
                $envio = $_POST["envio"];
                $id_Pedido = $_POST["idEncabezado"];
+               $usuario ="prueba";
                $updatePedido = "update tbl_encabezado_pedido SET estado = 'Proceso', envio ='$envio',impresion = '1' where Id_Encabezado_Pedido = '$id_Pedido'";
                $update = $con->query($updatePedido);
+               $nombre="Pedido Abierto";
+               $fecha = date("Y/m/d");
+               $hora  =  date("H:i:s");
+               $descripcion="Se ha cambiado de estado de pedido Abierto a Proceso: Pedido # - ".$id_Pedido;
+               $insertaBitacora  = "insert INTO `tbl_bitacora`  
+                          VALUES ('','".$usuario."','".$nombre."','".$descripcion."','".$hora."','".$fecha."')";
+               $bitacoraInsertada = $con->query($insertaBitacora);
+               
                $consultaPedido = "select T0.Id_Encabezado_Pedido  as id,T0.Fecha,T0.Hora,T0.Estado, concat(T1.Nombre,' ',T1.Apellido) as cliente,T1.Correo, T1.direccion, T1.telefono from tbl_encabezado_pedido T0
                 INNER JOIN tbl_usuario T1 on T0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario where Id_Encabezado_Pedido = '$id_Pedido'";
                 $consultando = $con->query($consultaPedido);

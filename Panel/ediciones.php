@@ -103,5 +103,20 @@ if($_POST["editaProducto"] == "editaProducto"){
          echo "<script language='javascript'>alert('Usuario editado exitosamente');</script>";
          echo "<script language='javascript'>window.open('listadoUsuarios.php','_self',);</script>";
     }
-
+ if($_POST["pedidoProceso"] == "pedidoProceso"){
+            $idPedido = $_POST["idPedido"];
+            echo "idPedido:  ".$idPedido;
+            $usuario ="prueba";
+            $updatePedido = "update tbl_encabezado_pedido SET Estado = 'Cerrado' where id_Encabezado_Pedido = '".$idPedido."'";
+            $update = $con->query($updatePedido);
+            $nombre="Pedido Cerrado";
+            $fecha = date("Y/m/d");
+            $hora  =  date("H:i:s");
+            $descripcion="Se ha cambiado de estado de pedido Proceso a Cerrado: Pedido # - ".$id_Pedido;
+            $insertaBitacora  = "insert INTO `tbl_bitacora`  
+                          VALUES ('','".$usuario."','".$nombre."','".$descripcion."','".$hora."','".$fecha."')";
+            $bitacoraInsertada = $con->query($insertaBitacora);
+         echo "<script language='javascript'>alert('Pedido cerrado exitosamente');</script>";
+          echo "<script language='javascript'>window.open('index.php','_self',);</script>";
+    }
 ?>
