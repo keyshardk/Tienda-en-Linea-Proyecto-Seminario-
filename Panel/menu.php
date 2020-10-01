@@ -41,7 +41,7 @@
         <a href="index.php" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Pedidos</a>
+        <a href="listadoPedidos.php" class="nav-link">Pedidos</a>
       </li>
     </ul>
 </nav>
@@ -75,19 +75,19 @@
                with font-awesome or any other icon font library -->
          <li class="nav-header">Pedidos</li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+            <a href="listadoPedidos.php?id=<?php echo "Abierto";?>" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Abiertos</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+            <a href="listadoPedidos.php?id=<?php echo "Proceso";?>" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>En proceso</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+            <a href="listadoPedidos.php?id=<?php echo "Cerrado";?>" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p>Cerrados</p>
             </a>
@@ -104,6 +104,13 @@
             <a href="listadoUsuarios.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Ver usuarios</p>
+            </a>
+          </li>
+          <li class="nav-header">Bitacora</li>
+          <li class="nav-item">
+            <a href="listadoBitacora.php" class="nav-link">
+              <i class="nav-icon fa fa-unlock-alt"></i>
+              <p>Ver registro</p>
             </a>
           </li>
       </ul>

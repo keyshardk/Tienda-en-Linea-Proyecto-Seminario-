@@ -45,12 +45,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado usuarios</h1>
+            <h1>Registro Bitacora</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
              <li class="breadcrumb-item active">                      
-                <a href="nuevoUsuario.php"><button type="button" class="btn btn-block btn-warning">Nuevo usuario</button></a>
+               <label><font color="red">Filtrar por Responsable, Nombre, Descripción, Fecha y Hora.</font></label>
               </li>
             </ol>
           </div>
@@ -65,47 +65,43 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">En la siguiente tabla encuentra todos los usuarios. </h3>
+                <h3 class="card-title">En la siguiente tabla encuentra el registro de bitacora del Panel de Control. </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id</th>
+                    <th>Responsable</th>
                     <th>Nombre</th>
-                    <th>Usuario</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
-                      $consultaListado ="select id_usuario as id,concat(Nombre,' ',Apellido) as nombre,Correo,Estado from tbl_usuario";
-                          $consultando = $con->query($consultaListado);
+                      $consultaBitacora ="select  Usuario, Nombre,Descripcion, Fecha, Hora from tbl_bitacora";
+                          $consultando = $con->query($consultaBitacora);
                           while ($row = mysqli_fetch_array($consultando)) 
-                                {
-                                  $id=$row["id"];
-                                  ?>
-                  
+                                {?>
                   <tr>
-                    <td><?php echo "".$row["id"]?></td>
-                    <td><?php echo "".$row["nombre"]?></td>
-                    <td><?php echo "".$row["Correo"]?></td>
-                    <td><?php echo "".$row["Estado"]?></td>
-                    <td><button onclick="location.href='detalleUsuario.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Ver detalle</button>
-                        <button onclick="location.href='editaUsuario.php?id=<?php echo $id;?>'" type="button" class="btn btn-primary">Realizar cambio</button>
+                    <td><?php echo "".$row["Usuario"]?></td>
+                    <td><?php echo "".$row["Nombre"]?></td>
+                    <td><?php echo "".$row["Descripcion"]?></td>
+                    <td><?php echo "".$row["Fecha"]?></td>
+                    <td><?php echo "".$row["Hora"]?>
                     </td>
                   </tr>
                <?php } ?>
                </tbody>
                   <tfoot>
                   <tr>
-                    <th>id</th>
+                    <th>Responsable</th>
                     <th>Nombre</th>
-                    <th>Existencia</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                   </tr>
                   </tfoot>
                 </table>
