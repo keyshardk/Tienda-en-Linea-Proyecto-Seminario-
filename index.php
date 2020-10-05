@@ -87,16 +87,17 @@
 						aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon fa fa-bars"> </span>
 					</button>
+
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
 							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
@@ -122,29 +123,28 @@
 						<div class="carousel-item active">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #1</h3>
+									<h3>Calidad!</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item2">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #2</h3>
+									<h3>Confort...</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item3">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #3</h3>
+									<h3>Elegancia.</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item4">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #4
-									</h3>
+									<h3>Exclusividad</h3>
 								</div>
 							</div>
 						</div>
@@ -166,6 +166,7 @@
 		</div>
     </div>
 </section>  
+
     
               <?php
             }
@@ -230,10 +231,10 @@
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
 							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
@@ -256,28 +257,28 @@
 						<div class="carousel-item active">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #1</h3>
+									<h3>Calidad</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item2">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #2</h3>
+									<h3>Confort...</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item3">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #3</h3>
+									<h3>Elegancia.</h3>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item item4">
 							<div class="container">
 								<div class="carousel-caption">
-									<h3>Descripcion #4
+									<h3>Exclusividad
 									</h3>
 								</div>
 							</div>
@@ -299,58 +300,43 @@
 			</div>
 		</div>
     </div>
-</section>
-                <?php
-            }
-
-            ?>
-    
-
-    
+</section><?php }?>
 <center>
+
     <section class="w3l-grids-hny-2">
 <center><div class="grids-hny-2-mian py-5">
-		<div class="container py-lg-5">
+		<center><div class="container py-lg-5">
 			<h3 class="hny-title mb-0 text-center">Categorias</h3>
 			<center><div class="welcome-grids row mt-5">
-				<div class="col-lg-2 col-md-4 col-6 welcome-image">
+				<?php 
+ 					$con = mysqli_connect('localhost','root','','mydb');
+ 					$categorias = "select T0.Id_Categorias as idCategoria,T0.Nombre, T1.Imagen1 from tbl_categorias T0 INNER JOIN tbl_detalle_producto T1 ON T0.Id_Categorias = T1.Tbl_Categorias_Id_Categorias where T0.Estado = 'Activo'";
+ 					$consulta   = $con->query($categorias);
+ 					while ($row = mysqli_fetch_array($consulta)) {
+ 					$nombre = $row["Nombre"];
+ 					$idCategoria = $row["idCategoria"];
+ 					$imagen = $row["Imagen1"];?>
+					<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-								<a href="Categoria.php">
-										<img src="Logo/Comedor1.jpg" class="img-fluid" alt="" />
+								<a href="Categoria.php?id=<?php echo $idCategoria;?>">
+										<img style="    max-width: 150px;max-height: 150px;" src="panel/imagenesProductos/<?php echo $imagen;?>" class="img-fluid" alt="" />
 								<div class="boxhny-content">
-                                    <h3 class="title">Comedores</h3>
+                                    <h3 class="title"><?php echo "".$nombre;?></h3>
 								</div>
 							</a>
 						</div>
-						<h4><a href="#URL">Comedores</a></h4>
+						<h4><a href="#URL"><?php echo "".$nombre;?></a></h4>
 				</div>
-				<div class="col-lg-2 col-md-4 col-6 welcome-image">
-						<div class="boxhny13">
-								<a href="Categoria.php">
-										<img src="Logo/Sala1.jpg" class="img-fluid" alt="" />
-								<div class="boxhny-content">
-									<h3 class="title">Salas</h3>
-								</div>
-							</a>
-						</div>
-						<h4><a href="Salas.php">Salas</a></h4>
-
-				</div>
-				<div class="col-lg-2 col-md-4 col-6 welcome-image">
-						<div class="boxhny13">
-								<a href="Categoria.php">
-										<img src="Logo/Ofertas1.jpg" class="img-fluid" alt="" />
-								<div class="boxhny-content">
-									<h3 class="title">Ofertas</h3>
-								</div>
-							</a>
-						</div>
-						<h4><a href="#URL">Ofertas</a></h4>
-				</div>
-			</div></center>
+				<?php } ?>
+				
+			</div>
+    </center>
 		</div>
-	</div></center>	
+    </center>
+	</div>
+    </center>	
 </section>
+
     </center>
 
     
@@ -362,7 +348,7 @@
 				<div class="col-lg-3 col-md-6 features4-grid">
 					<div class="features4-grid-inn">
 						<span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
-						<h5><a href="#URL">Llámanos en cualquier momento</a></h5>
+						<h5><a href="#URL">Llámanos 24/7</a></h5>
                         <p></p>
 					</div>
 				</div>
@@ -376,7 +362,7 @@
 					<div class="col-lg-3 col-md-6 features4-grid">
 							<div class="features4-grid-inn">
 								<span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
-								<h5><a href="#URL">Devoluciones gratis</a></h5>
+								<h5><a href="#URL">Devoluciones</a></h5>
 								<p></p>
 							</div>
 						</div>
@@ -393,7 +379,24 @@
 </section>
     
     
-
+<?php 
+ $con = mysqli_connect('localhost','root','','mydb');
+ if($con ->connect_error){
+ 	echo "No Conecta";
+	}
+	$masVendidos ="select T0.Tbl_Encabezado_Producto_Id_Producto as idProducto, T0.Imagen1 ,T0.Imagen2,T0.Precio, T0.PrecioOferta, T1.Nombre 
+					FROM tbl_detalle_producto T0 
+					INNER JOIN tbl_encabezado_producto T1 ON T0.Tbl_Encabezado_Producto_Id_Producto = T1.Id_Producto
+					INNER JOIN tbl_detalle_pedido T2 ON T0.Tbl_Encabezado_Producto_Id_Producto = T2.id_Producto  where T1.Estado = 'Activo' LIMIT 4";
+	$consulta = $con->query($masVendidos);
+	while ($row = mysqli_fetch_array($consulta))
+		  {
+		     $imagen  = $row["Imagen1"];
+		     $imagen2 = $row["Imagen2"];
+		     $idProducto  = $row["idProducto"];
+		     $precio = $row["Precio"];
+		     $precioOferta = $row["PrecioOferta"];
+		     $nombre = $row["Nombre"];?>
 <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
 		<div class="container py-lg-5">
@@ -402,9 +405,10 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2 transmitv">
 						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-1.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-11.jpg">
+							<input type="hidden" name="idProducto" id="idProducto" value="<?php echo $idProducto;?>">
+							<a href="Descripcion.php?id=<?php echo $idProducto;?>">
+								<center><img style="max-width: 230px;" class="pic-1 img-fluid" src="panel/imagenesProductos/<?php echo "".$imagen;?>"></center>
+								<center><img  style="max-width: 230px;" class="pic-2 img-fluid" src="panel/imagenesProductos/<?php echo "".$imagen2;?>"></center>
 							</a>
 							<div class="transmitv single-item">
 							<form action="#" method="post">
@@ -418,94 +422,23 @@
 								</form>
 							</div>
 						</div>
+						<?php if(is_null($precioOferta)){?>
+							<div class="product-content">
+								<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
+								<span class="price"><?php echo "Q. ".number_format($precio).".00";?></span>
+						   </div>
+						<?php  }else{ ?>
 						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
+							<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
+							<span class="price"><del><?php echo "Q. ".number_format($precio).".00";?></del><?php echo "Q. ".number_format($precioOferta).".00";?>
+						</div><?php  } ?>
 					</div>
 				</div>
-				<div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
 
-				</div>
-				<div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-3.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-33.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Dark Blue Top">
-											<input type="hidden" name="amount" value="799.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-
-				</div>
-				<div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-4.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-44.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Women Tunic">
-											<input type="hidden" name="amount" value="399.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-
-				</div>
 			</div>
 		</div>
 	</div>
-</section>
+</section><?php  } ?>
 
 
 
@@ -534,8 +467,8 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Categoria.php">Comedores</a></li>
-                                      <li><a href="Categoria.php">Salas</a></li>
+                                      <li><a href="Categoria.php?id=1">Comedores</a></li>
+                                      <li><a href="Categoria.php?id=2">Salas</a></li>
                                       <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
@@ -544,7 +477,7 @@
                               <h6>Direccion</h6>
                               <p class="mb-5">11 calle, Final lote 59 colonia los Pinos zona 17<br> Guatemala -- Guatemala</p>
                                 <h6>Telefono</h6>
-                              <p class="mb-5">+502 0000-0000</p>
+                              <p class="mb-5">+502 2424-5800</p>
                           </div>
                       </div>
                   </div>

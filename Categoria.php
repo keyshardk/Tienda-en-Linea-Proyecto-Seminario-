@@ -74,6 +74,7 @@
 				</div>
 			</div>
             
+
           
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
@@ -89,11 +90,11 @@
 							<li class="nav-item ">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
-							<li class="nav-item active">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
-							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
+							</li>
+							<li class="nav-item" active>
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
 							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
@@ -103,19 +104,26 @@
 				</div>
 			</nav>
       </header>
-        
+   <?php 
+		$idProducto = $_GET["id"];
+		$con= mysqli_connect('localhost','root','','mydb');
+		$producto ="select  Nombre from tbl_categorias where estado = 'Activo' and  	Id_Categorias = '$idProducto'";
+		$consulta = $con->query($producto);
+		while ($row = mysqli_fetch_array($consulta)) {
+				
+				$categoria = $row["Nombre"];?>             
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Nombre Categoria</h2>
+            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
             <ol class="breadcrumb mb-0">
               <li><a href="index.php">Inicio</a>
                 <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Nombre Categoria</li>
+              <li class="active"><?php echo "".$categoria;?></li>
             </ol>
           </nav>
         </div>
-      </div>
+      </div><?php } ?>
     </div>
     </div>
 </section>
@@ -183,11 +191,11 @@
 							<li class="nav-item ">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
-							<li class="nav-item active">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
-							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
 							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
@@ -197,39 +205,58 @@
 				</div>
 			</nav>
       </header>
-        
+  	<?php 
+		$idProducto = $_GET["id"];
+		$con= mysqli_connect('localhost','root','','mydb');
+		$producto ="select  Nombre from tbl_categorias where estado = 'Activo' and  	Id_Categorias = '$idProducto'";
+		$consulta = $con->query($producto);
+		while ($row = mysqli_fetch_array($consulta)) {
+				
+				$categoria = $row["Nombre"];?>        
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Nombre Categoria</h2>
+            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
             <ol class="breadcrumb mb-0">
               <li><a href="index.php">Inicio</a>
                 <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Nombre Categoria</li>
+              <li class="active"><?php echo "".$categoria;?></li>
             </ol>
           </nav>
         </div>
       </div>
+  <?php } ?>
     </div>
     </div>
-</section>
- 
-                    
-                    
-                <?php
-            }
-            ?>
 
     <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
 		<div class="container py-lg-5">
-			<div class="ecom-products-grids row mt-lg-5 mt-3">
+		  <div class="ecom-products-grids row mt-lg-5 mt-3">
+		  		<?php 
+					$con = mysqli_connect('localhost','root','','mydb');
+					$productos = "select T0.Id_Producto as idProducto, T0.Nombre, T1.Imagen1,T1.Imagen2, T1.Precio,T1.PrecioOferta 
+				  				  from tbl_encabezado_producto T0
+				  				  INNER JOIN tbl_detalle_producto T1 on T0.Id_Producto =T1.Tbl_Encabezado_Producto_Id_Producto
+				  				  INNER JOIN tbl_categorias T2 ON T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
+				  				  WHERE T0.Estado = 'Activo' and T2.Id_Categorias = '$idProducto'";
+					$consulta = $con->query($productos);
+					while ($row = mysqli_fetch_array($consulta)) {
+						    $idProd = $row["idProducto"];
+		   					$nombre  = $row["Nombre"];
+		   					$imagen1 = $row["Imagen1"];
+		   					$imagen2 = $row["Imagen2"];
+		   					$precio  = $row["Precio"];
+		   					$precioOferta = $row["PrecioOferta"]; ?>
+					
+					
+
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
+					   <div class="product-image2">
+							<a href="Descripcion.php?id=<?php echo $idProd;?>">
+								<center><img style="max-width: 220px;" class="pic-1 img-fluid" src="panel/imagenesProductos/<?php echo $imagen1;?>"></center>
+								<center><img style="max-width: 220px;" class="pic-2 img-fluid" src="panel/imagenesProductos/<?php echo $imagen2;?>"></center>
 							</a>
 							<div class="transmitv single-item">
 									<form action="#" method="post">
@@ -243,197 +270,29 @@
 										</form>
 									</div>
 						</div>
+						<?php 
+ 							if(is_null($precioOferta)){
+						?>
 						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
+							<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
+							<span class="price"><?php echo "Q. ".number_format($precio).".00";?></span>
 						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
+							<?php }else{?>
 						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
+							<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
+							<span class="price">
+                                <del><?php echo "Q. ".number_format($precio).".00";?></del> <br>
+                                <?php echo "Q. ".number_format($precioOferta).".00"  ?></span>
 						</div>
+					<?php  }?>
 					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-                <div class="col-lg-3 col-6 product-incfhny mt-4">
-					<div class="product-grid2">
-						<div class="product-image2">
-							<a href="Descripcion.php">
-								<img class="pic-1 img-fluid" src="assets/images/shop-2.jpg">
-								<img class="pic-2 img-fluid" src="assets/images/shop-22.jpg">
-							</a>
-							<div class="transmitv single-item">
-									<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
-											<input type="hidden" name="amount" value="599.99">
-											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
-											</button>
-										</form>
-									</div>
-						</div>
-						<div class="product-content">
-							<h3 class="title"><a href="#">Nombre</a></h3>
-							<span class="price"><del>Q 000.00</del>Q 000.00</span>
-						</div>
-					</div>
-				</div>
-			</div>
+				</div><?php  }?>
+           </div>
 		</div>
 	</div>
 </section>
 
-    
-
-  
-
-  <section class="w3l-footer-22">
+<section class="w3l-footer-22">
       <div class="footer-hny py-5">
           <div class="container py-lg-5">
               <div class="text-txt row">
@@ -458,8 +317,8 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Categoria.php">Comedores</a></li>
-                                      <li><a href="Categoria.php">Salas</a></li>
+                                      <li><a href="Categoria.php?id=1">Comedores</a></li>
+                                      <li><a href="Categoria.php?id=2">Salas</a></li>
                                       <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
