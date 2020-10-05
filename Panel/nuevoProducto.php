@@ -31,7 +31,12 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
-    ?>
+    $con   = mysqli_connect('localhost','root','','mydb');// 
+    if ($con->connect_error) 
+       {
+        die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+      }?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -70,7 +75,6 @@
                     <label><font color="red">Seleccione Categoria</font></label>
                       <select class="form-control" name="idCategoria" id="idCategoria">
                         <?php 
-                          $con   = mysqli_connect('localhost','root','','mydb');
                           $consultaCategoria ="select id_Categorias as id ,nombre from tbl_categorias 
                                                 where estado='Activo'";
                           $categoriaConsultada = $con->query($consultaCategoria);
@@ -185,10 +189,10 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 <a href="https://mueblesvelasquez.com/">Muebles Velasquez</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+      <b>Version</b> 1.0
     </div>
   </footer>
 

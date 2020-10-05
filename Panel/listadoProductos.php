@@ -31,6 +31,11 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con= mysqli_connect('localhost','root','','mydb');
+    if($con->connect_error){
+       die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+    }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -76,26 +81,28 @@
                     <th>Acción</th>
                   </tr>
                   </thead>
-                  <tbody>
+                   <tbody>
+                  <?php
+                      $consultaListado ="select id_Producto as id,T0.Codigo_Producto as codigo,T0.Nombre as nombre,T0.Estado, T1.existencia from tbl_encabezado_producto T0
+                        inner join tbl_detalle_producto T1 on T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto";
+                          $consultando = $con->query($consultaListado);
+                          while ($row = mysqli_fetch_array($consultando)) 
+                                {
+                                  $id=$row["id"];
+                                  ?>
+                 
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td><?php echo "".$row["codigo"];?></td>
+                    <td><?php echo "".$row["nombre"];?></td>
+                    <td><?php echo "".$row["existencia"];?></td>
+                    <td><?php echo "".$row["Estado"];?></td>
+                    <td><button onclick="location.href='detalleProducto.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Ver detalle</button>
+                        <button   onclick="location.href='editaProducto.php?id=<?php echo $id;?>'"type="button" class="btn btn-primary">Realizar cambio</button>
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
                   </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                  </tr>
-               </tbody>
+                
+              <?php } ?>
+              </tbody>
                   <tfoot>
                   <tr>
                     <th>id</th>
@@ -122,10 +129,10 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 <a href="https://mueblesvelasquez.com/">Muebles Velasquez</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+      <b>Version</b> 1.0
     </div>
   </footer>
 
