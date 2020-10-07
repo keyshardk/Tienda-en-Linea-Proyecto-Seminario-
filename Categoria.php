@@ -229,21 +229,21 @@
     </div>
 </section><?php  } ?>
 
+
     <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
 		<div class="container py-lg-5">
 		  <div class="ecom-products-grids row mt-lg-5 mt-3">
 		  		<?php 
 					$con = mysqli_connect('localhost','root','','mydb');
-					$productos = "select T0.Id_Producto as idProducto, T0.Nombre, T1.Imagen1,T1.Imagen2, T1.Precio,T1.PrecioOferta, T1.Id_Detalle_Producto as Id
+
 				  				  from tbl_encabezado_producto T0
 				  				  INNER JOIN tbl_detalle_producto T1 on T0.Id_Producto =T1.Tbl_Encabezado_Producto_Id_Producto
 				  				  INNER JOIN tbl_categorias T2 ON T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
 				  				  WHERE T0.Estado = 'Activo' and T2.Id_Categorias = '$idProducto'";
 					$consulta = $con->query($productos);
 					while ($row = mysqli_fetch_array($consulta)) {
-						    $idproducto = $row["idProducto"];
-						    $id = $row["Id"];
+
 		   					$nombre  = $row["Nombre"];
 		   					$imagen1 = $row["Imagen1"];
 		   					$imagen2 = $row["Imagen2"];
@@ -266,7 +266,7 @@
 											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
 											<input type="hidden" name="amount" value="599.99">
 											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-											 <a disabled class="btn btn-success" href="Carrito/cartAction.php?action=addToCart&id=<?php echo $id ; ?>">Agregar a Carrito</a>
+
 											</button>
 										</form>
 									</div>

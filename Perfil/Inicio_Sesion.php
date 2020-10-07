@@ -42,8 +42,7 @@ if ($result->num_rows > 0)
         } 
         if($consulta == '1')
         {
-            $insertaBitacora  = "insert INTO `tbl_bitacora`  VALUES ('','".$_SESSION['Usuario']."','Ingreso Usuario','Logueo de usuario Administrador','".$hora."','".$fecha."')";
-            $bitacoraInsertada = $conn->query($insertaBitacora);
+
             echo "<script language='javascript'> window.location.href = '../panel/inicio.php'; </script>";
         }
      }
