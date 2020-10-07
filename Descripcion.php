@@ -72,113 +72,8 @@
 				</div>
 			</div>
             
-          
-    <nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container-fluid serarc-fluid">
-					<a class="navbar-brand" href="index.php">
-						<center>Muebleria<span class="lohny"> Velasquez</span></center></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon fa fa-bars"> </span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="index.php">Inicio</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
-							  </li>
-							<li class="nav-item">
-								<a class="nav-link" href="Contacto.php">Contacto</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-      </header>
-        
-      
-        <?php 
-		$idProducto = $_GET["id"];
-		$con= mysqli_connect('localhost','root','','mydb');
-		$producto ="select T2.Nombre as categoria from tbl_encabezado_producto T0
-			INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto
-            INNER JOIN tbl_categorias T2 on T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
-			where T0.Id_Producto = '$idProducto'";
-		$consulta = $con->query($producto);
-		while ($row = mysqli_fetch_array($consulta)) {
-				
-				$categoria = $row["categoria"];?>  
-      <div class="breadcrumb-contentnhy">
-        <div class="container">
-          <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
-            <ol class="breadcrumb mb-0">
-              <li><a href="index.php">Inicio</a>
-                <span class="fa fa-angle-double-right"></span></li>
-              <li class="active"><?php echo "".$categoria;?></li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-  <?php } ?>
-    </div>
-    </div>
-</section>
 
-                <?php
-            }
-            else
-            {
-                ?>
-                   <section class="w3l-banner-slider-main inner-pagehny">
-  <div class="breadcrumb-infhny">
-    <div class="top-header-content">
-      <header class="tophny-header">
-        <div class="container-fluid">
-          <div class="top-right-strip row">
-            <div class="top-hny-left-content col-lg-6 pl-lg-0">
-            </div>
-         <ul class="top-hnt-right-content col-lg-6">
-                        <li class="transmitvcart galssescart2 cart cart box_1">
-							<form action="Perfil/Perfil.php" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="display" value="1">
-								<button style="background-color: black;" class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Perfil
-									<span class="fa fa-user-circle-o"></span>
-								</button>
-							</form>
-						</li>
-                          <li class="transmitvcart galssescart2 cart cart box_1">
-							<form action="Perfil/cerrrar_sesion.php" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="display" value="1">
-								<button style="background-color: black;" class="top_transmitv_cart" type="submit" name="submit" value="">
-									Cerrar Sesion
-									<span class="fa fa-power-off"></span>
-								</button>
-							</form>
-						</li>
-						<li class="transmitvcart galssescart2 cart cart box_1">
-							<form action="#" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="display" value="1">
-								<button style="background-color: black;" class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Carrito
-									<span class="fa fa-shopping-cart"></span>
-								</button>
-							</form>
-						</li>
-					</ul>
-				</div>
-			</div>
-            
+
           
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
@@ -194,8 +89,7 @@
 							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
+
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
@@ -224,11 +118,7 @@
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
-            <ol class="breadcrumb mb-0">
-              <li><a href="index.php">Inicio</a>
-                <span class="fa fa-angle-double-right"></span></li>
-              <li class="active"><?php echo "".$categoria;?></li>
+
             </ol>
           </nav>
         </div>
@@ -241,20 +131,7 @@
             }
             ?>
 
-        <?php 
-		$idProducto = $_GET["id"];
-		$con= mysqli_connect('localhost','root','','mydb');
-		$producto ="select T0.Nombre, T0.Descripcion, T1.Precio, T1.PrecioOferta, T1.Imagen1 
-					from tbl_encabezado_producto T0
-					INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto 
-					where T0.Id_Producto = '$idProducto'";
-		$consulta = $con->query($producto);
-		while ($row = mysqli_fetch_array($consulta)) {
-				$nombre=$row["Nombre"];
-				$descripcion=$row["Descripcion"];
-				$imagen = $row["Imagen1"];
-				$precio=$row["Precio"];
-				$precioOferta=$row["PrecioOferta"];?>  
+
 <section class="w3l-wecome-content-6">
 	  <div class="ab-content-6-mian py-5">
 			 <div class="container py-lg-5">

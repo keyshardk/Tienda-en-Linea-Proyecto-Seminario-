@@ -31,6 +31,12 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con   = mysqli_connect('localhost','root','','mydb');// 
+    if ($con->connect_error) 
+       {
+        die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+      }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -39,11 +45,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo usuario</h1>
+            <h1>Detalle Usuario</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">                      
+             <li class="breadcrumb-item active">                      
                 <a href="listadoUsuarios.php"><button type="button" class="btn btn-block btn-secondary">Ver listado usuarios</button></a>
               </li>
             </ol>
@@ -51,82 +57,97 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-warning">
-          <div class="card-header">
-            <h3 class="card-title">Datos generales del usuario</h3>
+
+       <section class="content">
+        <?php $con=mysqli_connect('localhost','root','','mydb');
+        if($con->connect_error){
+          echo "Error de conexion";
+        }
+        $id=$_GET["id"];
+        $consultaDetalle ="select concat(T0.Nombre,' ',T0.Apellido) as nombre,T0.Correo,T0.Estado,T1.Detalle as tipoUser from tbl_usuario T0 
+          INNER JOIN tbl_tipo_usuario T1 ON T1.Id_Tipo_Usuario =T0.Tbl_Tipo_Usuario_Id_Tipo_Usuario
+          where T0.id_Usuario = '$id'";
+        $detalleProducto = $con->query($consultaDetalle);
+        while ($row =mysqli_fetch_array($detalleProducto)) 
+              {
+                $nombre=$row["nombre"];
+                $correo=$row["Correo"];
+                $estado=$row["Estado"];
+                $tipoUser=$row["tipoUser"];
+              ?>
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><?php echo "".$nombre;?></h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
           </div>
-          <div class="card-body">
-            <form method="POST" action="inserciones.php" enctype='multipart/form-data'>
-              <div class="row">
-                <div class="col-sm-6">
-                      <div class="form-group">
-                       <label>Nombre</label>
-                         <input hidden name="insertaUsuario" id="insertaUsuario" value="nuevoUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
-                        <input required name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Apellido</label>
-                        <input required name="apellido" id="apellido" type="text" class="form-control" placeholder="Ingrese apellido">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Correo electronico</label>
-                        <input required name="correo" id="correo" type="email" class="form-control" placeholder="Ingrese correo electronico">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Contraseña</label>
-                        <input required name="pass" id="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                   <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Seleccione estado</label>
-                        <select class="form-control" name="estado" id="estado">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
-                        </select>
-                      </div>
-                      </div>
-                         </div>
-                        <center><div class="col-sm-2">
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear usuario</button>
-                </div>
-              </div></center>
-                  </div>
-                
-              </div>
-              <!-- /.card-body -->
-          </div>
-            </form>
-          <!--/.col (right) -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 order-2 order-md-1">
+              <div class="row">
+                 <div class="col-12 col-sm-3">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted"><font color="blue">Nombre Usuario</font></span>
+                      <span class="info-box-number text-center text-muted mb-0"><?php echo "".$nombre;?></span>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-12 col-sm-3">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted"><font color="blue">Correo electronico</font></span>
+                      <span class="info-box-number text-center text-muted mb-0"><?php echo "".$correo;?></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-3">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted"><font color="blue">Tipo Usuario</font></span>
+                      <span class="info-box-number text-center text-muted mb-0"><?php echo "".$tipoUser;?></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-3">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted"><font color="blue">Estado</font></span>
+                      <?php if($estado == "Activo"){?>
+                            <span class="info-box-number text-center text-muted mb-0"><font color="green"><?php echo "".$estado;?></font></span>
+                     <?php }else{?>
+                            <span class="info-box-number text-center text-muted mb-0"><font color="red"><?php echo "".$estado;?></font></span>
+                     <?php }?>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+<?php } ?>
     </section>
-    <!-- /.content -->
-    <!-- /.content -->
   </div>
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+   <footer class="main-footer">
     <strong>Copyright &copy; 2020 <a href="https://mueblesvelasquez.com/">Muebles Velasquez</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
     </div>
   </footer>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

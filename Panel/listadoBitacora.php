@@ -31,6 +31,12 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con   = mysqli_connect('localhost','root','','mydb');// 
+    if ($con->connect_error) 
+       {
+        die("Connection failed: " . $conn->connect_error);
+        echo "NO CONECTA";
+      }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -39,83 +45,77 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo usuario</h1>
+            <h1>Registro Bitacora</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">                      
-                <a href="listadoUsuarios.php"><button type="button" class="btn btn-block btn-secondary">Ver listado usuarios</button></a>
+             <li class="breadcrumb-item active">                      
+               <label><font color="red">Filtrar por Responsable, Nombre, Descripción, Fecha y Hora.</font></label>
               </li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-warning">
-          <div class="card-header">
-            <h3 class="card-title">Datos generales del usuario</h3>
-          </div>
-          <div class="card-body">
-            <form method="POST" action="inserciones.php" enctype='multipart/form-data'>
-              <div class="row">
-                <div class="col-sm-6">
-                      <div class="form-group">
-                       <label>Nombre</label>
-                         <input hidden name="insertaUsuario" id="insertaUsuario" value="nuevoUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
-                        <input required name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Apellido</label>
-                        <input required name="apellido" id="apellido" type="text" class="form-control" placeholder="Ingrese apellido">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Correo electronico</label>
-                        <input required name="correo" id="correo" type="email" class="form-control" placeholder="Ingrese correo electronico">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Contraseña</label>
-                        <input required name="pass" id="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                   <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Seleccione estado</label>
-                        <select class="form-control" name="estado" id="estado">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
-                        </select>
-                      </div>
-                      </div>
-                         </div>
-                        <center><div class="col-sm-2">
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear usuario</button>
-                </div>
-              </div></center>
-                  </div>
-                
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">En la siguiente tabla encuentra el registro de bitacora del Panel de Control. </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Responsable</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                      $consultaBitacora ="select  Usuario, Nombre,Descripcion, Fecha, Hora from tbl_bitacora";
+                          $consultando = $con->query($consultaBitacora);
+                          while ($row = mysqli_fetch_array($consultando)) 
+                                {?>
+                  <tr>
+                    <td><?php echo "".$row["Usuario"]?></td>
+                    <td><?php echo "".$row["Nombre"]?></td>
+                    <td><?php echo "".$row["Descripcion"]?></td>
+                    <td><?php echo "".$row["Fecha"]?></td>
+                    <td><?php echo "".$row["Hora"]?>
+                    </td>
+                  </tr>
+               <?php } ?>
+               </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Responsable</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                  </tr>
+                  </tfoot>
+                </table>
               </div>
               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           </div>
-            </form>
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
     <!-- /.content -->
   </div>
 

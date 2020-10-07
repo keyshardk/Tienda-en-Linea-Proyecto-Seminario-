@@ -31,6 +31,10 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
+    $con = mysqli_connect('localhost','root','','mydb');
+    if($con->connect_error){
+      echo "No conecta";
+    }
     ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -39,7 +43,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo usuario</h1>
+            <h1>Editar usuario</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -52,6 +56,21 @@
       </div><!-- /.container-fluid -->
     </section>
 <section class="content">
+  <?php 
+  $id = $_GET["id"];
+  $consultausuario="select T0.Id_Usuario as id,T0.Nombre,T0.Apellido,T0.Correo,
+                    T0.Estado,T1.Detalle as tipoUser from tbl_usuario T0 
+                    INNER JOIN tbl_tipo_usuario T1 ON T0.Tbl_Tipo_Usuario_Id_Tipo_Usuario = T1.Id_Tipo_Usuario where T0.Id_Usuario = '$id'";
+  $consultados = $con->query($consultausuario);
+  while ($row = mysqli_fetch_array($consultados)) {
+    $id = $row["id"];
+        $nombre = $row["Nombre"];
+        $apellido = $row["Apellido"];
+        $correo = $row["Correo"];
+        $estado =$row["Estado"];
+        $tipoUser = $row["tipoUser"];
+      
+  ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -60,38 +79,46 @@
             <h3 class="card-title">Datos generales del usuario</h3>
           </div>
           <div class="card-body">
-            <form method="POST" action="inserciones.php" enctype='multipart/form-data'>
+            <form method="POST" action="ediciones.php" enctype='multipart/form-data'>
               <div class="row">
                 <div class="col-sm-6">
                       <div class="form-group">
                        <label>Nombre</label>
-                         <input hidden name="insertaUsuario" id="insertaUsuario" value="nuevoUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
-                        <input required name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre">
+                         <input hidden name="editaUsuario" id="editaUsuario" value="editaUsuario" type="text" class="form-control" placeholder="Ingrese Código" required="">
+                          <input hidden readonly="" id="estadoActual" name="estadoActual" value="<?php echo "".$estado;?>"></input><br>
+                          <input hidden id="id" name="id" value="<?php echo "".$id;?>"></input><br>
+                        <input required name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre" value="<?php echo "".$nombre;?>">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Apellido</label>
-                        <input required name="apellido" id="apellido" type="text" class="form-control" placeholder="Ingrese apellido">
+                        <input required name="apellido" id="apellido" type="text" class="form-control" placeholder="Ingrese apellido" value="<?php echo "".$apellido;?>">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Correo electronico</label>
-                        <input required name="correo" id="correo" type="email" class="form-control" placeholder="Ingrese correo electronico">
+                        <input readonly="" required name="correo" id="correo" type="email" class="form-control" placeholder="Ingrese correo electronico" value="<?php echo "".$correo;?>">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Contraseña</label>
-                        <input required name="pass" id="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
+                        <input readonly="" required name="pass" id="pass" type="password" class="form-control" placeholder="Ingrese contraseña" value="***">
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                   <div class="col-sm-3">
+                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Seleccione estado</label>
+                        <label><font color="blue">Estado actual:  </font><?php echo " ".$estado?></label>
+                       
+                      </div>
+                      </div>
+                   <div class="col-sm-6">
+                      <div class="form-group">
+                        <label><font color="red">Seleccione estado si desea cambiarlo</font></label>
                         <select class="form-control" name="estado" id="estado">
                           <option>Activo</option>
                           <option>Inactivo</option>
@@ -99,10 +126,14 @@
                       </div>
                       </div>
                          </div>
-                        <center><div class="col-sm-2">
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear usuario</button>
-                </div>
+                        <center>
+                  <div class="col-sm-2">
+                  <div class="form-group">
+                     <button type="submit" class="btn btn-block bg-gradient-info btn-lg">Editar usuario</button>
+                   </div>
+                   <div class="form-group">
+                     <button onclick="location.href='eliminaciones.php?id=<?php echo $id;?>&var=<?php echo "user"?>'" type="button" class="btn btn-danger">Eliminar usuario</button>
+                 </div>
               </div></center>
                   </div>
                 
@@ -114,6 +145,7 @@
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
+    <?php } ?>
     </section>
     <!-- /.content -->
     <!-- /.content -->

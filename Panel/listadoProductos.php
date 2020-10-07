@@ -81,25 +81,28 @@
                     <th>Acción</th>
                   </tr>
                   </thead>
+                   <tbody>
                   <?php
-                      $consultaListado ="select T0.Codigo_Producto as codigo,T0.Nombre as nombre,T0.Estado, T1.existencia from tbl_encabezado_producto T0
+                      $consultaListado ="select id_Producto as id,T0.Codigo_Producto as codigo,T0.Nombre as nombre,T0.Estado, T1.existencia from tbl_encabezado_producto T0
                         inner join tbl_detalle_producto T1 on T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto";
                           $consultando = $con->query($consultaListado);
                           while ($row = mysqli_fetch_array($consultando)) 
                                 {
+                                  $id=$row["id"];
                                   ?>
-                  <tbody>
+                 
                   <tr>
                     <td><?php echo "".$row["codigo"];?></td>
                     <td><?php echo "".$row["nombre"];?></td>
                     <td><?php echo "".$row["existencia"];?></td>
                     <td><?php echo "".$row["Estado"];?></td>
-                    <td><button type="button" class="btn btn-secondary">Ver detalle</button>
-                        <button type="button" class="btn btn-primary">Realizar cambio</button>
+                    <td><button onclick="location.href='detalleProducto.php?id=<?php echo $id;?>'" type="button" class="btn btn-secondary">Ver detalle</button>
+                        <button   onclick="location.href='editaProducto.php?id=<?php echo $id;?>'"type="button" class="btn btn-primary">Realizar cambio</button>
                     </td>
                   </tr>
-                </tbody>
+                
               <?php } ?>
+              </tbody>
                   <tfoot>
                   <tr>
                     <th>id</th>
@@ -126,10 +129,10 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 <a href="https://mueblesvelasquez.com/">Muebles Velasquez</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+      <b>Version</b> 1.0
     </div>
   </footer>
 
