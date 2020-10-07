@@ -84,16 +84,16 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item ">
+							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
-							<li class="nav-item ">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
+							<li class="nav-item">
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
-							<li class="nav-item ">
+							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
 							</li>
 						</ul>
@@ -102,18 +102,31 @@
 			</nav>
       </header>
         
+      
+        <?php 
+		$idProducto = $_GET["id"];
+		$con= mysqli_connect('localhost','root','','mydb');
+		$producto ="select T2.Nombre as categoria from tbl_encabezado_producto T0
+			INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto
+            INNER JOIN tbl_categorias T2 on T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
+			where T0.Id_Producto = '$idProducto'";
+		$consulta = $con->query($producto);
+		while ($row = mysqli_fetch_array($consulta)) {
+				
+				$categoria = $row["categoria"];?>  
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Nombre Categoria</h2>
+            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
             <ol class="breadcrumb mb-0">
               <li><a href="index.php">Inicio</a>
                 <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Nombre Categoria</li>
+              <li class="active"><?php echo "".$categoria;?></li>
             </ol>
           </nav>
         </div>
       </div>
+  <?php } ?>
     </div>
     </div>
 </section>
@@ -178,16 +191,16 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item ">
+							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
-							<li class="nav-item ">
-								<a class="nav-link" href="Categoria.php">Comedores</a>
+							<li class="nav-item">
+								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="Categoria.php">Salas</a>
+								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
-							<li class="nav-item ">
+							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
 							</li>
 						</ul>
@@ -196,47 +209,79 @@
 			</nav>
       </header>
         
+
+        <?php 
+		$idProducto = $_GET["id"];
+		$con= mysqli_connect('localhost','root','','mydb');
+		$producto ="select T2.Nombre as categoria from tbl_encabezado_producto T0
+			INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto
+            INNER JOIN tbl_categorias T2 on T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
+			where T0.Id_Producto = '$idProducto'";
+		$consulta = $con->query($producto);
+		while ($row = mysqli_fetch_array($consulta)) {
+				
+				$categoria = $row["categoria"];?>  
       <div class="breadcrumb-contentnhy">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Nombre Categoria</h2>
+            <h2 class="hny-title text-center"><?php echo "".$categoria;?></h2>
             <ol class="breadcrumb mb-0">
               <li><a href="index.php">Inicio</a>
                 <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Nombre Categoria</li>
+              <li class="active"><?php echo "".$categoria;?></li>
             </ol>
           </nav>
         </div>
       </div>
+  <?php } ?>
     </div>
     </div>
 </section>
                 <?php
             }
             ?>
-    
+
+        <?php 
+		$idProducto = $_GET["id"];
+		$con= mysqli_connect('localhost','root','','mydb');
+		$producto ="select T0.Nombre, T0.Descripcion, T1.Precio, T1.PrecioOferta, T1.Imagen1 
+					from tbl_encabezado_producto T0
+					INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto = T1.Tbl_Encabezado_Producto_Id_Producto 
+					where T0.Id_Producto = '$idProducto'";
+		$consulta = $con->query($producto);
+		while ($row = mysqli_fetch_array($consulta)) {
+				$nombre=$row["Nombre"];
+				$descripcion=$row["Descripcion"];
+				$imagen = $row["Imagen1"];
+				$precio=$row["Precio"];
+				$precioOferta=$row["PrecioOferta"];?>  
 <section class="w3l-wecome-content-6">
 	  <div class="ab-content-6-mian py-5">
 			 <div class="container py-lg-5">
 					<div class="welcome-grids row">
 							<div class="col-lg-6 mb-lg-0 mb-5">
-									<h3 class="hny-title">Nombre Producto</h3>
-								     <p class="mb-4">Descripcion del Producto</p>
+									<h3 class="hny-title"><?php echo "".$nombre;?></h3>
+								     <p class="mb-4"><?php echo "".$descripcion;?></p>
+						<?php if($precioOferta <> ""){?>
                             <div class="product-content">
-							        <center> <span class="price"><br>Q 000.00<br><del style="color:gray;">Q 000.00</del></span></center>
+							        <center> <span class="price"><br><?php echo "Q. ".number_format($precioOferta).".00";?><br><del style="color:gray;"><?php echo "Q. ".number_format($precio).".00";?></del></span></center>
+						    </div><?php }else{ ?>
+						    <div class="product-content">
+							        <center> <span class="price"><br><?php echo "Q. ".number_format($precio).".00";?><br></span></center>
 						    </div>
+						<?php } ?>
 				            <div class="read">
 									<center><a href="#" class="read-more btn">Comprar</a></center>
 				             </div>	
 							</div>
 							<div class="col-lg-6 welcome-image">
-								<img src="assets/images/2.jpg" class="img-fluid" alt="" />
+								<img src="panel/imagenesProductos/<?php echo $imagen;?>" class="img-fluid" alt="" />
 							</div>	
 						</div>	
 				 </div>
 			 </div>
 	 </section>
-    
+    <?php } ?>
     
   <section class="w3l-footer-22">
       <div class="footer-hny py-5">
@@ -261,10 +306,10 @@
                           <div class="sub-one-left">
                               <h6>Nuestros Links</h6>
                               <div class="footer-hny-ul">
-                                  <ul>
+                                 <ul>
                                       <li><a href="index.php">Inicio</a></li>
-                                      <li><a href="Categoria.php">Comedores</a></li>
-                                      <li><a href="Categoria.php">Salas</a></li>
+                                      <li><a href="Categoria.php?id=1">Comedores</a></li>
+                                      <li><a href="Categoria.php?id=2">Salas</a></li>
                                       <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
