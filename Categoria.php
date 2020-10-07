@@ -40,8 +40,8 @@
 							<form action="#" method="post" class="last">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
-								<button class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Carrito
+								<button class="top_transmitv_cart" type="submit" name="submit" >
+									<a href="Carrito/viewCart.php">Mi Carrito</a>
 									<span class="fa fa-shopping-cart"></span>
 								</button>
 							</form>
@@ -166,8 +166,8 @@
 							<form action="#" method="post" class="last">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
-								<button style="background-color: black;" class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Carrito
+								<button class="top_transmitv_cart" type="submit" name="submit" >
+									<a href="Carrito/viewCart.php">Mi Carrito</a>
 									<span class="fa fa-shopping-cart"></span>
 								</button>
 							</form>
@@ -229,20 +229,21 @@
     </div>
     </div>
 
+
     <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
 		<div class="container py-lg-5">
 		  <div class="ecom-products-grids row mt-lg-5 mt-3">
 		  		<?php 
 					$con = mysqli_connect('localhost','root','','mydb');
-					$productos = "select T0.Id_Producto as idProducto, T0.Nombre, T1.Imagen1,T1.Imagen2, T1.Precio,T1.PrecioOferta 
+
 				  				  from tbl_encabezado_producto T0
 				  				  INNER JOIN tbl_detalle_producto T1 on T0.Id_Producto =T1.Tbl_Encabezado_Producto_Id_Producto
 				  				  INNER JOIN tbl_categorias T2 ON T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
 				  				  WHERE T0.Estado = 'Activo' and T2.Id_Categorias = '$idProducto'";
 					$consulta = $con->query($productos);
 					while ($row = mysqli_fetch_array($consulta)) {
-						    $idProd = $row["idProducto"];
+
 		   					$nombre  = $row["Nombre"];
 		   					$imagen1 = $row["Imagen1"];
 		   					$imagen2 = $row["Imagen2"];
@@ -265,7 +266,7 @@
 											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
 											<input type="hidden" name="amount" value="599.99">
 											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-												Agregar a Carrito
+
 											</button>
 										</form>
 									</div>

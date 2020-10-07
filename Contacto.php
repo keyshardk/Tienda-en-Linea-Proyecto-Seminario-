@@ -82,7 +82,6 @@
 						aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon fa fa-bars"> </span>
 					</button>
-
 				</div>
 			</nav>
       </header>

@@ -73,6 +73,7 @@
 			</div>
             
 
+
           
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
@@ -85,7 +86,7 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item ">
+							<li class="nav-item active">
 								<a class="nav-link" href="index.php">Inicio</a>
 							</li>
 
@@ -93,7 +94,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
-							<li class="nav-item ">
+							<li class="nav-item">
 								<a class="nav-link" href="Contacto.php">Contacto</a>
 							</li>
 						</ul>

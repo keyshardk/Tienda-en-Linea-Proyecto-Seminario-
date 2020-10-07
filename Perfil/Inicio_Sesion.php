@@ -42,8 +42,7 @@ if ($result->num_rows > 0)
         } 
         if($consulta == '1')
         {
-
-            $bitacoraInsertada = $conn->query($insertaBitacora);
+acoraInsertada = $conn->query($insertaBitacora);
             echo "<script language='javascript'> window.location.href = '../panel/inicio.php'; </script>";
         }
      }
