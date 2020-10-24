@@ -57,7 +57,7 @@
 							<div class="login-bghny p-md-5 p-4 mx-auto mw-100">
 								<form action="Perfil/Inicio_Sesion.php" method="post">
 									<div class="form-group">
-										<p class="login-texthny mb-2">Correo</p>
+										<p class="login-texthny mb-2">Correos</p>
 										<input type="email" class="form-control" id="Correo"  name="Correo" placeholder="" required="">
 									</div>
 									<div class="form-group">
