@@ -31,7 +31,7 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
-    $con   = mysqli_connect('localhost','root','','mydb');// 
+    $con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
     if ($con->connect_error) 
        {
         die("Connection failed: " . $conn->connect_error);
@@ -59,10 +59,7 @@
     </section>
 
        <section class="content">
-        <?php $con=mysqli_connect('localhost','root','','mydb');
-        if($con->connect_error){
-          echo "Error de conexion";
-        }
+        <?php  
         $id=$_GET["id"];
         $consultaDetalle ="select concat(T0.Nombre,' ',T0.Apellido) as nombre,T0.Correo,T0.Estado,T1.Detalle as tipoUser from tbl_usuario T0 
           INNER JOIN tbl_tipo_usuario T1 ON T1.Id_Tipo_Usuario =T0.Tbl_Tipo_Usuario_Id_Tipo_Usuario
@@ -167,7 +164,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!--<script src="dist/js/adminlte.min.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->

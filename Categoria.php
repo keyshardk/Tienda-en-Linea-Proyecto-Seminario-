@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zxx">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -74,7 +74,6 @@
 				</div>
 			</div>
             
-
           
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
@@ -106,7 +105,7 @@
       </header>
    <?php 
 		$idProducto = $_GET["id"];
-		$con= mysqli_connect('localhost','root','','mydb');
+		$con= mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
 		$producto ="select  Nombre from tbl_categorias where estado = 'Activo' and  	Id_Categorias = '$idProducto'";
 		$consulta = $con->query($producto);
 		while ($row = mysqli_fetch_array($consulta)) {
@@ -194,7 +193,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="Categoria.php?id=1">Comedores</a>
 							</li>
-							<li class="nav-item active">
+							<li class="nav-item">
 								<a class="nav-link" href="Categoria.php?id=2">Salas</a>
 							  </li>
 							<li class="nav-item">
@@ -207,7 +206,7 @@
       </header>
   	<?php 
 		$idProducto = $_GET["id"];
-		$con= mysqli_connect('localhost','root','','mydb');
+		$con= mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
 		$producto ="select  Nombre from tbl_categorias where estado = 'Activo' and  	Id_Categorias = '$idProducto'";
 		$consulta = $con->query($producto);
 		while ($row = mysqli_fetch_array($consulta)) {
@@ -228,22 +227,23 @@
   <?php } ?>
     </div>
     </div>
-
+</section><?php  } ?>
 
     <section class="w3l-ecommerce-main">
 	<div class="ecom-contenthny py-5">
 		<div class="container py-lg-5">
 		  <div class="ecom-products-grids row mt-lg-5 mt-3">
 		  		<?php 
-					$con = mysqli_connect('localhost','root','','mydb');
-
+					$con = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
+					$productos = "select T0.Id_Producto as idProducto, T0.Nombre, T1.Imagen1,T1.Imagen2, T1.Precio,T1.PrecioOferta, T1.Id_Detalle_Producto as Id
 				  				  from tbl_encabezado_producto T0
 				  				  INNER JOIN tbl_detalle_producto T1 on T0.Id_Producto =T1.Tbl_Encabezado_Producto_Id_Producto
 				  				  INNER JOIN tbl_categorias T2 ON T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias
-				  				  WHERE T0.Estado = 'Activo' and T2.Id_Categorias = '$idProducto'";
+				  				  WHERE T0.Estado = 'Activo' and T2.Id_Categorias = '$idProducto' and T1.existencia > 0";
 					$consulta = $con->query($productos);
 					while ($row = mysqli_fetch_array($consulta)) {
-
+						    $idproducto = $row["idProducto"];
+						    $id = $row["Id"];
 		   					$nombre  = $row["Nombre"];
 		   					$imagen1 = $row["Imagen1"];
 		   					$imagen2 = $row["Imagen2"];
@@ -255,7 +255,7 @@
 				<div class="col-lg-3 col-6 product-incfhny mt-4">
 					<div class="product-grid2">
 					   <div class="product-image2">
-							<a href="Descripcion.php?id=<?php echo $idProd;?>">
+							<a href="Descripcion.php?id=<?php echo $idproducto;?>">
 								<center><img style="max-width: 220px;" class="pic-1 img-fluid" src="panel/imagenesProductos/<?php echo $imagen1;?>"></center>
 								<center><img style="max-width: 220px;" class="pic-2 img-fluid" src="panel/imagenesProductos/<?php echo $imagen2;?>"></center>
 							</a>
@@ -266,26 +266,19 @@
 											<input type="hidden" name="transmitv_item" value="Men's Pink Shirt">
 											<input type="hidden" name="amount" value="599.99">
 											<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-
+											 <a disabled class="btn btn-success" href="Carrito/cartAction.php?action=addToCart&id=<?php echo $id ; ?>">Agregar a Carrito</a>
 											</button>
 										</form>
 									</div>
 						</div>
-						<?php 
- 							if(is_null($precioOferta)){
-						?>
-						<div class="product-content">
-							<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
-							<span class="price"><?php echo "Q. ".number_format($precio).".00";?></span>
-						</div>
-							<?php }else{?>
-						<div class="product-content">
-							<h3 class="title"><a href="#"><?php echo "".$nombre;?></a></h3>
-							<span class="price">
-                                <del><?php echo "Q. ".number_format($precio).".00";?></del> <br>
-                                <?php echo "Q. ".number_format($precioOferta).".00"  ?></span>
-						</div>
-					<?php  }?>
+						<?php if($precioOferta <> ""){?>
+                            <div class="product-content">
+							        <center> <span class="price"><br><?php echo "Q. ".number_format($precioOferta).".00";?><br><del style="color:gray;"><?php echo "Q. ".number_format($precio).".00";?></del></span></center>
+						    </div><?php }else{ ?>
+						    <div class="product-content">
+							        <center> <span class="price"><br><?php echo "Q. ".number_format($precio).".00";?><br></span></center>
+						    </div>
+						<?php } ?>
 					</div>
 				</div><?php  }?>
            </div>
@@ -308,6 +301,10 @@
                           </li>
                           <li><a class="instagram" href="#"><span class="fa fa-instagram" aria-hidden="true"></span></a>
                           </li>
+                           <br>
+                          <br>
+                          <br>
+                          	<center><img  style="max-width: 230px;" class="pic-2 img-fluid" src="ssl.png"></center>
                       </ul>
                   </div>
 

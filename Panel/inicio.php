@@ -32,7 +32,19 @@
   <?php 
     include 'menu.php';
     ?>
-  
+<div class="content-wrapper">
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            
+                <center><img src="imagenesProductos/LOGO.png" width="100%" height="auto"></center>
+            
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+</div>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

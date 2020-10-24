@@ -46,7 +46,7 @@
         </div>
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
-					<a class="navbar-brand" href="index.php">
+					<a class="navbar-brand" href="../index.php">
 						<center>Muebleria<span class="lohny"> Velasquez</span></center></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -105,7 +105,7 @@
           <br>
           <br>
     
-    
+  
 <main class="panelD">
   <center><h1>Mis Pedidos</h1></center>
   <div class="tabla">
@@ -116,32 +116,28 @@
         <th><strong><center><b>Monto</b></center></strong></th>
         <th><strong><center><b>Fecha</b></center></strong></th>
       </tr>
+      <?php 
+       $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+       $consulta ="select T3.Nombre,SUM(T1.Total) as total,T0.Fecha   from tbl_encabezado_pedido T0
+                    INNER JOIN tbl_detalle_pedido T1 ON T0.Id_Encabezado_Pedido = T1.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido
+                    INNER JOIN  tbl_usuario T2 on T0.Tbl_Usuario_Id_Usuario = T2.Id_Usuario
+                    INNER JOIN tbl_encabezado_producto T3 on T3.Id_Producto = T1.id_Producto
+                    WHERE T2.Correo = '$user' GROUP BY T0.Id_Encabezado_Pedido";
+
+      $pedidosConsulta = $conn->query($consulta);
+      while ($row = mysqli_fetch_array($pedidosConsulta)) {
+              $descripcion = $row["Nombre"];
+              $total = $row["total"];
+              $fecha = $row["Fecha"];
+             
+  ?>
       <tr>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th> 
+        <th><center><?php echo "".$descripcion;?></center></th>
+        <th><center><?php echo "Q. ".number_format($total)."";?></center></th>
+        <th><center><?php echo "".$fecha;?></center></th> 
       </tr>
-      <tr>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th> 
-      </tr>
-      <tr>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th> 
-      </tr>
-      <tr>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th> 
-      </tr>
-      <tr>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th>
-        <th><center>$300</center></th> 
-      </tr>
-    </table>
+      <?php } ?>
+   </table>
   </div>
 </main>
 
@@ -173,7 +169,8 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-
+                                      <li><a href="Categoria.php?id=1">Comedores</a></li>
+                                      <li><a href="Categoria.php?id=2">Salas</a></li>
                                       <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>

@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-$con   = mysqli_connect('localhost','root','','mydb');// 
+$con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
 //$con   = mysqli_connect('server','user','pass','bd');// Check
 if ($con->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -77,7 +77,7 @@ if($_POST["insertaProducto"] == "nuevoProducto"){
      $nombre="Nuevo Usuario Admin";
      $descripcion="Creación de nuevo usuario administrador.";
      $insertaCategoria  = "insert INTO `tbl_usuario`  
-                          VALUES ('','".$_POST["nombre"]."','".$_POST["apellido"]."','".$_POST["correo"]."','".$encrypt."','".$_POST["estado"]."','".$admin."')";
+                          VALUES ('','".$_POST["nombre"]."','".$_POST["apellido"]."','','','".$_POST["correo"]."','".$encrypt."','".$_POST["estado"]."','".$admin."')";
      $categoriaInsertada = $con->query($insertaCategoria);
      $insertaBitacora  = "insert INTO `tbl_bitacora`  
                           VALUES ('','".$usuario."','".$nombre."','".$descripcion."','".$hora."','".$fecha."')";

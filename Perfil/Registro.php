@@ -33,7 +33,7 @@ else
 {
     
     $sql =" INSERT INTO tbl_usuario (Id_Usuario,Nombre,Apellido,Direccion,telefono,Correo,Clave,Estado,Tbl_Tipo_Usuario_Id_Tipo_Usuario) 
-    values                  ('','$nombre','$apellido',NULL,NULL,'$correo','$encrypt','Activo','1')";
+    values                  ('','$nombre','$apellido',NULL,NULL,'$correo','$encrypt','Activo','2')";
     $result = mysqli_query($conn,$sql);
     
       echo "<script language='javascript'> alert('Usuario registrado Exitosamente!'); window.location.href = 'Perfil.php'; </script>";

@@ -31,7 +31,7 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
-    $con   = mysqli_connect('localhost','root','','mydb');// 
+    $con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
     if ($con->connect_error) 
        {
         die("Connection failed: " . $conn->connect_error);
@@ -96,8 +96,8 @@
                   <?php
                      $estado=$_GET["id"];
                       $consultaPedido ="select T0.Id_Encabezado_Pedido as id,T0.Estado,T0.Fecha,T0.Hora, CONCAT(T1.Nombre,' ',T1.Apellido) AS usuario, sum(T2.Total) as total from tbl_encabezado_pedido T0 
-                        INNER JOIN tbl_usuario T1 ON t0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario
-                        INNER JOIN tbl_detalle_pedido T2 ON T0.Id_Encabezado_Pedido = T2.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido WHERE T0.Estado = '$estado'";
+                        INNER JOIN tbl_usuario T1 ON T0.Tbl_Usuario_Id_Usuario = T1.Id_Usuario
+                        INNER JOIN tbl_detalle_pedido T2 ON T0.Id_Encabezado_Pedido = T2.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido WHERE T0.Estado = '$estado' Group by T0.Id_Encabezado_Pedido";
                           $consultando = $con->query($consultaPedido);
                           while ($row = mysqli_fetch_array($consultando)) 
                                 {
@@ -175,7 +175,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!--<script src="dist/js/adminlte.min.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->

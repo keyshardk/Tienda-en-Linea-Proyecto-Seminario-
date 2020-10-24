@@ -38,19 +38,25 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.php" class="nav-link">Inicio</a>
+        <a href="inicio.php" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="listadoPedidos.php" class="nav-link">Pedidos</a>
+        <a href="listadoBitacora.php" class="nav-link">Bitacora</a>
       </li>
     </ul>
 </nav>
   <!-- /.navbar -->
+<?php
+/* $dbhost = "mysql.hostinger.es";    // localhost or IP
+$dbuser = "u604611936_keyshardm";     // database username
+$dbpass = 'Juegos15';              // database password
+$dbname = 'u604611936_mydb'; */
 
+?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
+    <a href="inicio.php" class="brand-link">
       <img src="imagenesProductos/trebol.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Muebles Velasquez</span>
@@ -64,7 +70,7 @@
           <img src="imagenesProductos/banner.png" class="img-circle elevation-2" alt="Muebles">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Bienvenido!</a>
+          <a href="../Perfil/cerrrar_sesion.php" class="d-block">Cerrar Sesión</a>
         </div>
       </div>
 
@@ -113,6 +119,14 @@
               <p>Ver registro</p>
             </a>
           </li>
+          <li class="nav-header">Otros</li>
+          <li class="nav-item">
+            <a href="../index.php" class="nav-link">
+              <i class="fa fa-shopping-bag"></i>
+              <p>Ir a Tienda</p>
+            </a>
+          </li>
+          
       </ul>
       </nav>
       <!-- /.sidebar-menu -->

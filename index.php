@@ -17,7 +17,6 @@
             error_reporting(E_ALL ^ E_NOTICE);
             error_reporting(0);
             $user = $_SESSION['Usuario'];
-
             if($user == null || $$user = '')
             {
               ?>
@@ -40,7 +39,7 @@
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
 								<button class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Carrito
+									<a href="Carrito/viewCart.php">Mi Carrito</a>
 									<span class="fa fa-shopping-cart"></span>
 								</button>
 							</form>
@@ -166,7 +165,6 @@
 		</div>
     </div>
 </section>  
-
     
               <?php
             }
@@ -206,7 +204,7 @@
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
 								<button style="background-color: black;" class="top_transmitv_cart" type="submit" name="submit" value="">
-									Mi Carrito
+									<a href="Carrito/viewCart.php">Mi Carrito</a>
 									<span class="fa fa-shopping-cart"></span>
 								</button>
 							</form>
@@ -309,8 +307,8 @@
 			<h3 class="hny-title mb-0 text-center">Categorias</h3>
 			<center><div class="welcome-grids row mt-5">
 				<?php 
- 					$con = mysqli_connect('localhost','root','','mydb');
- 					$categorias = "select T0.Id_Categorias as idCategoria,T0.Nombre, T1.Imagen1 from tbl_categorias T0 INNER JOIN tbl_detalle_producto T1 ON T0.Id_Categorias = T1.Tbl_Categorias_Id_Categorias where T0.Estado = 'Activo'";
+ 					$con = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
+ 					$categorias = "select T0.Id_Categorias as idCategoria,T0.Nombre, T1.Imagen1 from tbl_categorias T0 INNER JOIN tbl_detalle_producto T1 ON T0.Id_Categorias = T1.Tbl_Categorias_Id_Categorias where T0.Estado = 'Activo' GROUP BY T0.Nombre";
  					$consulta   = $con->query($categorias);
  					while ($row = mysqli_fetch_array($consulta)) {
  					$nombre = $row["Nombre"];
@@ -380,18 +378,19 @@
     
     
 <?php 
- $con = mysqli_connect('localhost','root','','mydb');
+ $con = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
  if($con ->connect_error){
  	echo "No Conecta";
 	}
-	$masVendidos ="select T0.Tbl_Encabezado_Producto_Id_Producto as idProducto, T0.Imagen1 ,T0.Imagen2,T0.Precio, T0.PrecioOferta, T1.Nombre 
+	$masVendidos ="select T0.Tbl_Encabezado_Producto_Id_Producto as idProducto, T0.Imagen1 ,T0.Imagen2,T0.Precio, T0.PrecioOferta, T1.Nombre,T0.Id_Detalle_Producto as Id
 					FROM tbl_detalle_producto T0 
 					INNER JOIN tbl_encabezado_producto T1 ON T0.Tbl_Encabezado_Producto_Id_Producto = T1.Id_Producto
-					INNER JOIN tbl_detalle_pedido T2 ON T0.Tbl_Encabezado_Producto_Id_Producto = T2.id_Producto  where T1.Estado = 'Activo' LIMIT 4";
+					INNER JOIN tbl_detalle_pedido T2 ON T0.Id_Detalle_Producto = T2.id_Producto  where T1.Estado = 'Activo' and T0.existencia > 0 LIMIT 4";
 	$consulta = $con->query($masVendidos);
 	while ($row = mysqli_fetch_array($consulta))
 		  {
 		     $imagen  = $row["Imagen1"];
+             $id = $row["Id"];
 		     $imagen2 = $row["Imagen2"];
 		     $idProducto  = $row["idProducto"];
 		     $precio = $row["Precio"];
@@ -417,7 +416,7 @@
 									<input type="hidden" name="transmitv_item" value="Women Maroon Top">
 									<input type="hidden" name="amount" value="899.99">
 									<button type="submit" class="transmitv-cart ptransmitv-cart add-to-cart">
-										Agregar a Carrito
+									<center> <a disabled class="btn btn-success" href="Carrito/cartAction.php?action=addToCart&id=<?php echo $id ; ?>">Agregar a Carrito</a></center>
 									</button>
 								</form>
 							</div>
@@ -457,6 +456,10 @@
                           </li>
                           <li><a class="instagram" href="#"><span class="fa fa-instagram" aria-hidden="true"></span></a>
                           </li>
+                          <br>
+                          <br>
+                          <br>
+                          	<center><img  style="max-width: 230px;" class="pic-2 img-fluid" src="ssl.png"></center>
                       </ul>
                   </div>
 

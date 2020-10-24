@@ -1,22 +1,38 @@
 <?php
-// include database configuration file
+
 include 'dbConfig.php';
 
-// initializ shopping cart class
+
 include 'Cart.php';
 $cart = new Cart;
 
-// redirect to home if cart is empty
-if($cart->total_items() <= 0){
-    header("Location: index.php");
+
+if($cart->total_items() <= 0)
+{
+    header("Location: ../index.php");
 }
 
-// set customer ID in session
-$_SESSION['sessCustomerID'] = 1;
 
-// get customer details by session customer ID
-$query = $db->query("SELECT * FROM tbl_usuario WHERE Nombre = 'Diego'");
+    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(0);
+    $user = $_SESSION['Usuario'];
+
+    if($user == null || $$user = '')
+    {
+        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(0);
+        echo "<script language='javascript'> alert('Por favor Inicie Sesion.'); window.location.href = '../index.php'; </script>";
+        die();
+        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(0);
+    }
+
+error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
+$query = $db->query("SELECT * FROM tbl_usuario WHERE Correo = '$user'");
 $custRow = $query->fetch_assoc();
+error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,15 +51,22 @@ $custRow = $query->fetch_assoc();
     </style>
 </head>
 <body>
+    
+        <div class="menu"></div>
 <div class="container">
-    <h1>Vista previa del pedido</h1>
+    <center><h1>Vista previa del pedido</h1></center>
+    <br>
+    <br>
+    <br>
+    <form method="POST" action="save.php" id="productos" name="productos" enctype='multipart/form-data'>
+
     <table class="table">
     <thead>
         <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>SubTotal</th>
+            <th><h3>Producto</h3></th>
+            <th><h3>Precio</h3></th>
+            <th><h3>Cantidad</h3></th>
+            <th><h3>Sub Total</h3></th>
         </tr>
     </thead>
     <tbody>
@@ -54,12 +77,15 @@ $custRow = $query->fetch_assoc();
             foreach($cartItems as $item){
         ?>
         <tr>
-            <td><?php echo $item["name"]; ?></td>
-            <td style="color:#50ac42;"><?php echo 'Q',' ' .number_format($item["subtotal"]).'.00'; ?>
-				<input hidden type="text" id="precio" name="precio[]" value="<?php $item["subtotal"];?>">
+            <td style="font-size: 16px;"><?php echo $item["name"]; ?></td>
+            <td style="color:#50ac42;font-size: 16px;"><?php echo 'Q',' ' .number_format($item["subtotal"]).'.00'; ?>
+				<input hidden type="text" id="precio" name="precio[]" value="<?php echo $item["subtotal"];?>">
+                <input hidden type="text" id="idProducto"     name="idProducto[]"     value="<?php echo $item["id"];?>">
+                <input hidden  type="" name="user" id="user" value="<?php echo "".$_SESSION['Usuario'];?>">
             </td>
-            <td><?php echo $item["qty"]; ?></td>
-            <td style="color:#50ac42;"><?php echo 'Q',' ' .number_format($item["subtotal"]).'.00'; ?>
+            <td style="font-size: 16px;"><?php echo $item["qty"]; ?></td>
+            <input hidden type="text" id="cantidad" name="cantidad[]" value="<?php echo $item["qty"];?>">
+            <td style="color:#50ac42;font-size: 16px;"><?php echo 'Q',' ' .number_format($item["subtotal"]).'.00'; ?>
 				<input hidden type="text" id="subTotal" name="subTotal[]" value="<?php $item["subtotal"];?>">
             </td>
         </tr>
@@ -69,9 +95,9 @@ $custRow = $query->fetch_assoc();
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3"></td>
+            <td style="font-size: 16px;" colspan="3"></td>
             <?php if($cart->total_items() > 0){ ?>
-            <td class="text-center"><strong>
+            <td style="font-size: 16px;" class="text-center"><strong>
                 Total 
                  <?php echo 'Q',' ' .number_format($cart->total()).'.00'; ?>
                 </strong></td>
@@ -81,15 +107,34 @@ $custRow = $query->fetch_assoc();
     </table>
     <div class="shipAddr">
         <h4>Datos de Comprador</h4>
-        <p><?php echo $custRow['Nombre']; ?></p>
-        <p><?php echo $custRow['Correo']; ?></p>
-        <p><?php echo $custRow['telefono']; ?></p>
-        <p><?php echo $custRow['direccion']; ?></p>
+        <p><b>Nombre:</b> <?php echo $custRow['Nombre']; ?></p>
+        <input hidden type="" name="nombreComprador" id="nombreComprador" value="<?php echo "".$custRow['Nombre'];?>">
+        <p><b>Correo:</b> <?php echo $custRow['Correo']; ?></p>
+        <p><b>Telefono:</b> <?php echo $custRow['telefono']; ?></p>
+        <p><b>Direccion:</b> <?php echo $custRow['direccion']; ?></p>
     </div>
+
+    <br>
+    <br>
     <div class="footBtn">
-        <a href="viewCart.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i>Continuar Comprando</a>
-        <a href="#" class="btn btn-success orderBtn">Realizar Pedido <i class="glyphicon glyphicon-menu-right"></i></a>
+        <br>
+        <br>
+         <td><a href="../index.php" class="btn btn-warning" style="    margin-top: -58px;"><i class="glyphicon glyphicon-menu-left"></i>Continuar Comprando</a></td>
+         <td colspan="2"></td>
+        <td><button  style="max-width: 250px;margin-top: -34px;margin-left: 156px;" type="submit" class="btn btn-success orderBtn">Realizar pedido<i class="glyphicon "></i></button></td>
+        <br>
+        <br>
     </div>
+    </form>
 </div>
+   <div class="pagina"></div>
 </body>
+    
+    <script>
+    $(document).ready(function () {
+      $('.menu').load('Menu.php');
+    });
+  </script>
+    
+   
 </html>

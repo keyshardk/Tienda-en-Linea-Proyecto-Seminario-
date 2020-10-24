@@ -31,7 +31,7 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
-    $con   = mysqli_connect('localhost','root','','mydb');// 
+    $con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
     if ($con->connect_error) 
        {
         die("Connection failed: " . $conn->connect_error);
@@ -163,9 +163,11 @@
               <!-- Table row -->
               <?php 
 
-                   $pedidoDetalle = "select T0.Cantidad ,T0.Precio, T1.Nombre, T1.Descripcion ,T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido  as idEncabezado  
+                   $pedidoDetalle = "select T0.Cantidad ,T0.Precio, T2.Nombre, T2.Descripcion ,T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido  as idEncabezado  
                       from tbl_detalle_pedido T0 
-                     INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
+                     INNER JOIN tbl_detalle_producto  T1  ON T0.id_Producto = T1.Id_Detalle_Producto
+                     INNER JOIN tbl_encabezado_producto T2 ON T1.Tbl_Encabezado_Producto_Id_Producto = T2.Id_Producto
+                     WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
                      $consultando = $con->query($pedidoDetalle);
                      while ($row = mysqli_fetch_array($consultando)) {
                              $cantidad = $row["Cantidad"];
@@ -204,14 +206,14 @@
               </div>
               <!-- /.row -->
                 <?php } ?> 
-            <form target="_blank" method="POST" action="pedidoImprime.php">
+            <form  method="POST" action="pedidoImprime.php">
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">Importante:</p>
                   <?php if($estado == "Abierto"){ ?>
                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    Cuando de click en el boton "Gestionar pedido" se generá un pdf y   llegará un correo al cliente con el pdf adjunto indicandole que su pedido ya fué procesado y está listo para enviar.
+                    Cuando de click en el boton "Gestionar pedido" se generá un pdf , en este momento el pedido ya se encuentra en gestión.
                   </p><?php } ?>
                   <?php if($estado == "Proceso"){?>
                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
@@ -226,7 +228,7 @@
                
                 <?php 
                   $pedidoPago = "select T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido as idEncabezado,T0.Cantidad ,T0.Precio ,T2.Envio as envio from tbl_detalle_pedido T0 
-                    INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto
+                      INNER JOIN tbl_detalle_producto  T1  ON T0.id_Producto = T1.Id_Detalle_Producto
                     INNER JOIN tbl_encabezado_pedido T2 ON T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = T2.Id_Encabezado_Pedido WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
                      $consultando = $con->query($pedidoPago);
                      while ($row = mysqli_fetch_array($consultando)) {
@@ -273,14 +275,14 @@
                 <div class="col-12">
                   <?php 
                       if($estado == "Abierto"){?>
-                        <button type="submit" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Gestionar pedido</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Gestionar pedido</button>
                       <?php } ?>
                       </form>
                        <form method="POST" action="ediciones.php">
                        <?php if($estado == "Proceso"){?>
                        
-                          <input  name="pedidoProceso" id="pedidoProceso" value="pedidoProceso">
-                          <input  name="idPedido" id="idPedido" value="<?php echo "".$idEncabezado;?>">
+                          <input  hidden name="pedidoProceso" id="pedidoProceso" value="pedidoProceso">
+                          <input  hidden name="idPedido" id="idPedido" value="<?php echo "".$idEncabezado;?>">
                           <button type="submit" class="btn btn-primary">Cerrar pedido</button>
                       
                       <?php }?>
@@ -330,7 +332,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!--<script src="dist/js/adminlte.min.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->

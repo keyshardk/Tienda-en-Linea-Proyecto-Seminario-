@@ -31,7 +31,7 @@
 <div class="wrapper">
   <?php 
     include 'menu.php';
-    $con   = mysqli_connect('localhost','root','','mydb');// 
+    $con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
     if ($con->connect_error) 
        {
         die("Connection failed: " . $conn->connect_error);
@@ -59,15 +59,13 @@
     </section>
 
        <section class="content">
-        <?php $con=mysqli_connect('localhost','root','','mydb');
-        if($con->connect_error){
-          echo "Error de conexion";
-        }
+        <?php 
+      
         $id=$_GET["id"];
         $consultaDetalle ="select T0.Codigo_Producto as codigo,T0.Nombre,T0.Descripcion as descripcion,T0.Estado,T1.Precio,
                           T1.PrecioOferta,T1.existencia,T1.Marca,T1.Imagen1,T1.Imagen2,T1.Imagen3,
-                          T2.Nombre as categoria from Tbl_Encabezado_Producto T0 
-                          INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto=T1.Tbl_Encabezado_Producto_Id_Producto
+                          T2.Nombre as categoria from tbl_encabezado_producto T0 
+                          INNER JOIN tbl_detalle_producto T1 ON T0.Id_Producto=T1.tbl_encabezado_producto_Id_Producto
                           INNER JOIN tbl_categorias T2 on T1.Tbl_Categorias_Id_Categorias = T2.Id_Categorias WHERE T0.id_Producto = '$id'";
         $detalleProducto = $con->query($consultaDetalle);
         while ($row =mysqli_fetch_array($detalleProducto)) 
@@ -213,7 +211,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!--<script src="dist/js/adminlte.min.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->

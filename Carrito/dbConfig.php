@@ -1,9 +1,10 @@
 <?php
 //DB details
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'mydb';
+$dbHost = 'mysql.hostinger.es';
+$dbUsername = 'u604611936_keyshardm';
+$dbPassword = 'Juegos15';
+$dbName = 'u604611936_mydb';
+
 
 
 //Create connection and select DB

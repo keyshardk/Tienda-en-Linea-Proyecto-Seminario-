@@ -27,11 +27,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed"><br>
+  <button onclick="location.href='inicio.php'" type="button" class="btn btn-warning">Regresar a panel</button>
 <div class="wrapper">
+
   <?php 
    
-    $con   = mysqli_connect('localhost','root','','mydb');// 
+    $con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
     if ($con->connect_error) 
        {
         die("Connection failed: " . $conn->connect_error);
@@ -41,6 +43,7 @@
       }?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -52,8 +55,11 @@
       </div><!-- /.container-fluid -->
     </section>
  <section class="content">
+   
       <div class="container-fluid">
+      
         <div class="row">
+         
           <div class="col-12">
              <div class="callout callout-info">
               <h5><i class="fas fa-info"></i> Original. Primera Impresión</h5>
@@ -139,9 +145,11 @@
 
               <!-- Table row -->
               <?php 
-                   $pedidoDetalle = "select T0.Cantidad ,T0.Precio, T1.Nombre, T1.Descripcion ,T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido  as idEncabezado  
+                   $pedidoDetalle = "sselect T0.Cantidad ,T0.Precio, T2.Nombre, T2.Descripcion ,T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido  as idEncabezado  
                       from tbl_detalle_pedido T0 
-                     INNER JOIN tbl_encabezado_producto  T1  ON T0.id_Producto = T1.Id_Producto WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
+                 INNER JOIN tbl_detalle_producto  T1  ON T0.id_Producto = T1.Id_Detalle_Producto
+                INNER JOIN tbl_encabezado_producto T2 ON T1.Tbl_Encabezado_Producto_Id_Producto = T2.Id_Producto
+                 WHERE T0.Tbl_Encabezado_Pedido_Id_Encabezado_Pedido = '$id_Pedido'";
                      $consultando = $con->query($pedidoDetalle);
                      while ($row = mysqli_fetch_array($consultando)) {
                              $cantidad = $row["Cantidad"];
@@ -263,7 +271,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!--<script src="dist/js/adminlte.min.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->

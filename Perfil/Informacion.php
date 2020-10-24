@@ -42,7 +42,7 @@
         </div>
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
-					<a class="navbar-brand" href="index.php">
+					<a class="navbar-brand" href="../index.php">
 						<center>Muebleria<span class="lohny"> Velasquez</span></center></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -143,7 +143,9 @@
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.php">Inicio</a></li>
-
+                                      <li><a href="Categoria.php?id=1">Comedores</a></li>
+                                      <li><a href="Categoria.php?id=2">Salas</a></li>
+                                      <li><a href="Contacto.php">Contacto</a></li>
                                   </ul>
                               </div>
                           </div>

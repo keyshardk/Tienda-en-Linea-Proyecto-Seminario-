@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-$con   = mysqli_connect('localhost','root','','mydb');// 
+$con   = mysqli_connect('mysql.hostinger.es','u604611936_keyshardm','Juegos15','u604611936_mydb');// Check
 //$con   = mysqli_connect('server','user','pass','bd');// Check
 if ($con->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -105,7 +105,7 @@ if($_POST["editaProducto"] == "editaProducto"){
     }
  if($_POST["pedidoProceso"] == "pedidoProceso"){
             $idPedido = $_POST["idPedido"];
-            echo "idPedido:  ".$idPedido;
+           // echo "idPedido:  ".$idPedido;
             $usuario ="prueba";
             $updatePedido = "update tbl_encabezado_pedido SET Estado = 'Cerrado' where id_Encabezado_Pedido = '".$idPedido."'";
             $update = $con->query($updatePedido);
@@ -117,6 +117,6 @@ if($_POST["editaProducto"] == "editaProducto"){
                           VALUES ('','".$usuario."','".$nombre."','".$descripcion."','".$hora."','".$fecha."')";
             $bitacoraInsertada = $con->query($insertaBitacora);
          echo "<script language='javascript'>alert('Pedido cerrado exitosamente');</script>";
-          echo "<script language='javascript'>window.open('index.php','_self',);</script>";
+          echo "<script language='javascript'>window.open('inicio.php','_self',);</script>";
     }
 ?>

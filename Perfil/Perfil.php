@@ -48,7 +48,7 @@ body { overflow : hidden } // esto igual quitaria horizontal y vertical
         </div>
     <nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid serarc-fluid">
-					<a class="navbar-brand" href="index.php">
+					<a class="navbar-brand" href="../index.php">
 						<center>Muebleria<span class="lohny"> Velasquez</span></center></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
